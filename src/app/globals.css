@@ -22,14 +22,35 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
-html, body, #root {
+html, body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  max-width: 100vw;
+}
+
+.app-shell {
+  background: radial-gradient(circle at 72% 8%, #164f66 0%, #0b273f 34%, #071426 100%);
+}
+
+.map-atmosphere {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(4, 13, 28, 0.48) 0%, transparent 27%, transparent 63%, rgba(3, 12, 24, 0.34) 100%),
+    radial-gradient(circle at 18% 6%, rgba(34, 197, 217, 0.12), transparent 27%);
+}
+
+#__next {
+  width: 100%;
+  height: 100%;
 }
 
 .maplibregl-canvas {
@@ -51,51 +72,86 @@ html, body, #root {
   color: rgba(255,255,255,0.5) !important;
 }
 
+/* Map popups: MapLibre ships with a white content surface by default. */
+.maplibregl-popup {
+  max-width: min(320px, calc(100vw - 1.25rem)) !important;
+}
+
+.maplibregl-popup-content {
+  padding: 0 !important;
+  overflow: hidden;
+  background: transparent !important;
+  border-radius: 1rem;
+  box-shadow: none !important;
+}
+
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+  border-top-color: rgba(6, 18, 36, 0.98) !important;
+}
+
+.maplibregl-popup-anchor-top .maplibregl-popup-tip {
+  border-bottom-color: rgba(6, 18, 36, 0.98) !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
+  height: 4px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(34, 197, 217, 0.22);
   border-radius: 2px;
 }
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 217, 0.38);
+}
 
-/* Marker pulse animation */
+/* Hide scrollbar track visually but keep scroll */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* ───────────── Animations ───────────── */
+
 @keyframes markerPulse {
-  0% { transform: scale(1); opacity: 1; }
-  70% { transform: scale(2.5); opacity: 0; }
+  0%   { transform: scale(1); opacity: 1; }
+  70%  { transform: scale(2.5); opacity: 0; }
   100% { transform: scale(1); opacity: 0; }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-20px); }
-  to { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(-14px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(30px); }
-  to { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(22px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-out forwards;
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.animate-slide-left {
-  animation: slideInLeft 0.35s ease-out forwards;
-}
+.animate-fade-in    { animation: fadeIn 0.25s ease-out forwards; }
+.animate-slide-left { animation: slideInLeft 0.3s ease-out forwards; }
+.animate-slide-right{ animation: slideInRight 0.35s ease-out forwards; }
+.animate-slide-up   { animation: slideUp 0.3s ease-out forwards; }
 
-.animate-slide-right {
-  animation: slideInRight 0.4s ease-out forwards;
-}
+/* ───────────── Marker pulse ───────────── */
 
 .marker-pulse::after {
   content: '';
@@ -105,16 +161,38 @@ html, body, #root {
   animation: markerPulse 2s ease-out infinite;
 }
 
+/* ───────────── Glass panels ───────────── */
+
 .glass-panel {
-  background: rgba(8, 18, 34, 0.8);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(160deg, rgba(8,18,38,0.95) 0%, rgba(10,24,50,0.93) 100%);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(255, 255, 255, 0.06) inset;
 }
 
 .glass-panel-light {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ───────────── Header glow ───────────── */
+
+.header-glow {
+  box-shadow:
+    0 14px 38px rgba(0, 0, 0, 0.42),
+    0 1px 0 rgba(255, 255, 255, 0.07) inset,
+    0 0 0 1px rgba(34, 197, 217, 0.05);
+}
+
+/* ───────────── Mobile safe area ───────────── */
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }

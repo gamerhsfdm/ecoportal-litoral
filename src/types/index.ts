@@ -22,6 +22,10 @@ export interface Attraction {
   image: string;
   gallery: string[];
   rating: number;
+  address?: string;
+  altitudeM?: number;
+  startDate?: string;
+  endDate?: string;
   highlights: string[];
   hours?: string;
   tip?: string;

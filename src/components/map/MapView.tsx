@@ -447,10 +447,13 @@ export function MapView({ mapRef }: MapViewProps) {
             onClose={() => setSelectedAttraction(null)}
           >
             <div
-              className="w-64 sm:w-72 rounded-2xl overflow-hidden shadow-2xl animate-fade-in border border-white/15 text-white"
-              style={{ background: "rgba(6, 18, 36, 0.98)" }}
+              className="w-[min(19rem,calc(100vw-1.25rem))] rounded-2xl overflow-hidden shadow-2xl animate-fade-in border border-white/15 text-white"
+              style={{
+                background: "linear-gradient(155deg, rgba(8, 25, 49, 0.99), rgba(5, 16, 34, 0.99))",
+                boxShadow: "0 18px 46px rgba(0,0,0,0.56), 0 1px 0 rgba(255,255,255,0.08) inset",
+              }}
             >
-              <div className="relative h-32 w-full overflow-hidden bg-slate-900">
+              <div className="relative h-36 w-full overflow-hidden bg-slate-900">
                 <Image
                   src={selectedAttraction.image}
                   alt={selectedAttraction.name}
@@ -458,11 +461,11 @@ export function MapView({ mapRef }: MapViewProps) {
                   className="object-cover"
                   sizes="288px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(6,18,36,0.95)] via-transparent to-black/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(5,16,34,0.96)] via-slate-950/15 to-black/25" />
 
                 <button
                   onClick={() => setSelectedAttraction(null)}
-                  className="absolute top-2.5 right-2.5 w-6 h-6 rounded-full flex items-center justify-center bg-black/60 hover:bg-black/90 text-white transition-colors cursor-pointer"
+                  className="absolute top-2.5 right-2.5 w-7 h-7 rounded-full flex items-center justify-center bg-slate-950/70 hover:bg-slate-950 text-white border border-white/15 transition-colors cursor-pointer"
                 >
                   <X size={12} />
                 </button>
@@ -489,9 +492,9 @@ export function MapView({ mapRef }: MapViewProps) {
                 </div>
               </div>
 
-              <div className="p-3.5 space-y-2">
+              <div className="p-4 space-y-2.5">
                 <div>
-                  <h3 className="font-bold text-white text-sm leading-snug">
+                  <h3 className="font-bold text-white text-[15px] leading-snug tracking-tight">
                     {selectedAttraction.name}
                   </h3>
                   <div className="flex items-center gap-1 mt-1 text-[11px] text-white/50">
@@ -501,14 +504,14 @@ export function MapView({ mapRef }: MapViewProps) {
                   </div>
                 </div>
 
-                <p className="text-xs text-white/60 line-clamp-2 leading-relaxed">
+                <p className="text-xs text-white/65 line-clamp-2 leading-relaxed">
                   {selectedAttraction.shortDesc}
                 </p>
 
-                <div className="pt-2 flex items-center justify-between border-t border-white/10">
+                <div className="pt-2.5 flex items-center justify-between border-t border-white/10">
                   <button
                     onClick={() => setDetailAttraction(selectedAttraction)}
-                    className="w-full flex items-center justify-center gap-1 py-1.5 px-3 rounded-xl text-xs font-bold transition-all hover:brightness-110 cursor-pointer shadow-md"
+                    className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold transition-all hover:brightness-110 active:scale-[0.98] cursor-pointer shadow-md"
                     style={{
                       background:
                         CATEGORY_CONFIG[selectedAttraction.category]?.color ||

@@ -335,6 +335,39 @@ export function AttractionDetailSheet() {
 
           {/* Practical Info cards (Hours, Tips, Biome) */}
           <div className="space-y-2.5">
+            {(detailAttraction.address || detailAttraction.altitudeM !== undefined) && (
+              <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                <div className="w-9 h-9 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0 text-cyan-300">
+                  <MapPin size={16} />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-[10px] text-white/40 font-semibold uppercase tracking-wider">
+                    Referência do local
+                  </div>
+                  {detailAttraction.address && (
+                    <div className="text-xs text-white/80 leading-relaxed mt-0.5">
+                      {detailAttraction.address}
+                    </div>
+                  )}
+                  {detailAttraction.altitudeM !== undefined && (
+                    <div className="text-[11px] text-cyan-200/75 mt-1">
+                      Altitude aproximada: {detailAttraction.altitudeM} m
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {(detailAttraction.startDate || detailAttraction.endDate) && (
+              <div className="flex items-center gap-3 px-3.5 py-2.5 rounded-2xl bg-amber-500/8 border border-amber-400/15 text-xs text-amber-100/80">
+                <Clock size={14} className="text-amber-300 shrink-0" />
+                <span>
+                  Período de referência: <strong className="text-amber-100">{detailAttraction.startDate}</strong>
+                  {detailAttraction.endDate && detailAttraction.endDate !== detailAttraction.startDate ? ` — ${detailAttraction.endDate}` : ""}
+                </span>
+              </div>
+            )}
+
             {detailAttraction.hours && (
               <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/5 border border-white/10">
                 <div

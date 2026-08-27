@@ -13,7 +13,7 @@ export function EcoLegend() {
 
   return (
     <div
-      className="absolute bottom-8 left-4 z-20 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-xl border border-emerald-500/20 text-white animate-fade-in pointer-events-auto"
+      className="absolute bottom-4 left-3 right-16 z-20 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-xl border border-emerald-500/20 text-white animate-fade-in pointer-events-auto sm:bottom-8 sm:left-4 sm:right-auto"
       style={{ background: "rgba(6, 20, 32, 0.92)", maxWidth: "280px" }}
     >
       <div className="flex items-center justify-between px-3 py-2 border-b border-white/10 bg-emerald-950/40">

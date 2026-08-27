@@ -25,7 +25,7 @@ export function FloatingControls({
   } = useMapStore();
 
   return (
-    <div className="absolute bottom-8 right-4 z-20 flex flex-col gap-2 pointer-events-auto">
+    <div className="absolute bottom-4 right-3 z-20 flex flex-col gap-2 pointer-events-auto sm:bottom-8 sm:right-4">
       {/* Zoom controls */}
       <div
         className="flex flex-col rounded-2xl overflow-hidden shadow-2xl backdrop-blur-xl border border-white/10"

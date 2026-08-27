@@ -51,11 +51,12 @@ export default function Home() {
 
   return (
     <main
-      className="relative w-full h-full overflow-hidden select-none"
+      className="relative w-full h-full overflow-hidden select-none app-shell"
       style={{ fontFamily: "'Outfit', sans-serif" }}
     >
       {/* ─── Interactive Map with Polyline Tours & Eco Polygons ─── */}
       <MapView mapRef={mapRef} />
+      <div className="map-atmosphere" aria-hidden="true" />
 
       {/* ─── Top Navigation Header with Routes & Events ─── */}
       <Header onGeolocate={handleGeolocate} />

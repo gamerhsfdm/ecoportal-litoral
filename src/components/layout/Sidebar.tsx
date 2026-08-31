@@ -8,6 +8,9 @@ import {
   ChevronDown,
   Compass,
   X,
+  MapPin,
+  Star,
+  Layers,
 } from "lucide-react";
 
 const CATEGORIES: Category[] = [
@@ -24,6 +27,7 @@ export function Sidebar() {
   const {
     activeCategories,
     toggleCategory,
+    setAllCategories,
     activeCity,
     selectedAttraction,
     setSelectedAttraction,
@@ -49,82 +53,99 @@ export function Sidebar() {
   };
 
   const cityLabel =
-    activeCity === "Todos" ? "Litoral PR" : activeCity.split(" ")[0];
+    activeCity === "Todos" ? "Litoral PR" : activeCity;
 
   return (
     <>
-      {/* Mobile toggle button — positioned below the two-row header */}
-      <button
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-        className="absolute left-3 z-30 lg:hidden flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-white cursor-pointer shadow-xl backdrop-blur-xl border border-white/10 transition-all active:scale-95"
-        style={{
-          top: "6.25rem",
-          background:
-            "linear-gradient(135deg, rgba(8,18,42,0.96) 0%, rgba(11,24,52,0.94) 100%)",
-          boxShadow:
-            "0 4px 20px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.06) inset",
-        }}
-      >
-        <Filter size={12} className="text-cyan-400" />
-        <span className="font-semibold">Filtros ({filtered.length})</span>
-        <ChevronDown
-          size={12}
-          className={`transition-transform duration-200 ${sidebarOpen ? "rotate-180" : ""}`}
-        />
-      </button>
+      {/* ── Mobile Floating Filter Button (Cleanly positioned below the single header) ── */}
+      <div className="absolute top-[4.5rem] left-3 z-20 lg:hidden pointer-events-auto">
+        <button
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          className="flex items-center gap-2 px-3.5 py-2 rounded-2xl text-xs font-bold text-white shadow-xl backdrop-blur-xl border border-cyan-500/30 transition-all active:scale-95 cursor-pointer"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(8, 22, 46, 0.95) 0%, rgba(12, 30, 60, 0.92) 100%)",
+            boxShadow:
+              "0 8px 24px rgba(0,0,0,0.5), 0 0 15px rgba(34,197,217,0.15)",
+          }}
+        >
+          <div className="w-5 h-5 rounded-lg bg-cyan-500/20 text-cyan-300 flex items-center justify-center">
+            <Filter size={11} />
+          </div>
+          <span>Filtros & Locais</span>
+          <span className="px-1.5 py-0.5 rounded-md bg-cyan-400/20 text-cyan-300 text-[10px] font-extrabold border border-cyan-400/30">
+            {filtered.length}
+          </span>
+          <ChevronDown
+            size={13}
+            className={`text-white/60 transition-transform duration-300 ${
+              sidebarOpen ? "rotate-180 text-cyan-400" : ""
+            }`}
+          />
+        </button>
+      </div>
 
-      {/* Mobile backdrop overlay */}
+      {/* ── Mobile Backdrop (Closes on tap) ── */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 z-[18] lg:hidden"
+          className="fixed inset-0 z-30 lg:hidden bg-black/60 backdrop-blur-sm transition-opacity duration-300 pointer-events-auto"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
-      {/* Sidebar container */}
+      {/* ── Sidebar Container (Desktop Island / Mobile Slide Sheet) ── */}
       <aside
-        className={`absolute z-20 flex flex-col gap-2 transition-all duration-300 pointer-events-auto ${
+        className={`fixed lg:absolute z-40 lg:z-20 flex flex-col gap-2.5 transition-all duration-300 pointer-events-auto ${
           sidebarOpen
-            ? "opacity-100 translate-x-0"
-            : "opacity-0 -translate-x-3 pointer-events-none lg:opacity-100 lg:translate-x-0 lg:pointer-events-auto"
+            ? "opacity-100 translate-y-0 lg:translate-x-0"
+            : "opacity-0 translate-y-8 lg:translate-y-0 lg:-translate-x-8 pointer-events-none lg:opacity-100 lg:translate-x-0 lg:pointer-events-auto"
         }`}
         style={{
-          top: "6.25rem",
+          top: "4.5rem",
           left: "0.75rem",
-          maxHeight: "calc(100dvh - 7.25rem)",
-          width: "min(256px, calc(100vw - 1.5rem))",
+          maxHeight: "calc(100vh - 5.5rem)",
+          maxWidth: "320px",
         }}
       >
         {/* Category Filters Panel */}
         <div
-          className="rounded-2xl p-3 shadow-2xl backdrop-blur-2xl border border-white/10 animate-slide-left flex-shrink-0"
+          className="rounded-3xl p-3.5 shadow-2xl backdrop-blur-2xl border border-white/10 flex-shrink-0 relative overflow-hidden"
           style={{
             background:
-              "linear-gradient(160deg, rgba(8,18,42,0.96) 0%, rgba(10,24,52,0.93) 100%)",
+              "linear-gradient(165deg, rgba(8, 22, 46, 0.97) 0%, rgba(6, 16, 36, 0.98) 100%)",
             boxShadow:
-              "0 8px 32px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.07) inset",
+              "0 16px 40px rgba(0,0,0,0.6), 0 0 20px rgba(34,197,217,0.1)",
           }}
         >
+          {/* Header */}
           <div className="flex items-center justify-between mb-2.5 px-0.5">
-            <div className="text-[10px] font-bold uppercase tracking-widest text-white/40 flex items-center gap-1.5">
-              <Compass size={11} className="text-cyan-400" />
+            <div className="flex items-center gap-1.5 text-xs font-bold text-white tracking-wide">
+              <Compass size={14} className="text-cyan-400" />
               <span>Categorias</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] text-cyan-400/80 font-semibold">
-                {cityLabel}
+              <span className="text-[10px] font-semibold text-white/40">
+                ({cityLabel})
               </span>
+            </div>
+
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={setAllCategories}
+                className="text-[10px] font-bold text-cyan-400 hover:text-cyan-300 px-2 py-0.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 transition-colors cursor-pointer"
+              >
+                Todas
+              </button>
               <button
                 onClick={() => setSidebarOpen(false)}
-                className="lg:hidden w-5 h-5 rounded-full bg-white/8 hover:bg-white/15 text-white/50 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                className="lg:hidden w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                title="Fechar"
               >
-                <X size={10} />
+                <X size={12} />
               </button>
             </div>
           </div>
 
-          {/* 2-column grid of category buttons */}
-          <div className="grid grid-cols-2 gap-1">
+          {/* 2-Column Category Grid */}
+          <div className="grid grid-cols-2 gap-1.5">
             {CATEGORIES.map((cat) => {
               const cfg = CATEGORY_CONFIG[cat];
               const count = attractions.filter((a) => {
@@ -139,32 +160,33 @@ export function Sidebar() {
                 <button
                   key={cat}
                   onClick={() => toggleCategory(cat)}
-                  className="flex items-center gap-1.5 px-2 py-1.5 rounded-xl text-xs transition-all cursor-pointer text-left active:scale-95"
+                  className="flex items-center gap-1.5 px-2.5 py-2 rounded-2xl text-xs transition-all cursor-pointer text-left active:scale-95 group"
                   style={{
-                    background: active
-                      ? cfg.bg
-                      : "rgba(255,255,255,0.04)",
+                    background: active ? cfg.bg : "rgba(255,255,255,0.04)",
                     border: `1px solid ${
-                      active ? cfg.color + "40" : "rgba(255,255,255,0.07)"
+                      active ? cfg.color + "50" : "rgba(255,255,255,0.06)"
                     }`,
+                    boxShadow: active ? `0 0 12px ${cfg.color}20` : "none",
                   }}
                 >
-                  <span className="text-sm leading-none flex-shrink-0">{cfg.icon}</span>
+                  <span className="text-sm leading-none shrink-0 group-hover:scale-110 transition-transform">
+                    {cfg.icon}
+                  </span>
                   <span
-                    className="flex-1 font-medium text-[11px] truncate"
+                    className="flex-1 font-bold text-[11px] truncate"
                     style={{
-                      color: active ? cfg.color : "rgba(255,255,255,0.4)",
+                      color: active ? cfg.color : "rgba(255,255,255,0.5)",
                     }}
                   >
                     {cat}
                   </span>
                   <span
-                    className="text-[9px] font-bold px-1 py-0.5 rounded-full min-w-[16px] text-center flex-shrink-0"
+                    className="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full min-w-[18px] text-center shrink-0"
                     style={{
                       background: active
-                        ? cfg.color + "22"
-                        : "rgba(255,255,255,0.05)",
-                      color: active ? cfg.color : "rgba(255,255,255,0.25)",
+                        ? cfg.color + "25"
+                        : "rgba(255,255,255,0.06)",
+                      color: active ? cfg.color : "rgba(255,255,255,0.3)",
                     }}
                   >
                     {count}
@@ -177,26 +199,35 @@ export function Sidebar() {
 
         {/* Attractions List Panel */}
         <div
-          className="rounded-2xl overflow-hidden shadow-2xl backdrop-blur-2xl border border-white/10 flex flex-col animate-slide-left"
+          className="rounded-3xl overflow-hidden shadow-2xl backdrop-blur-2xl border border-white/10 flex flex-col flex-1"
           style={{
             background:
-              "linear-gradient(160deg, rgba(8,18,42,0.96) 0%, rgba(10,24,52,0.93) 100%)",
+              "linear-gradient(165deg, rgba(8, 22, 46, 0.97) 0%, rgba(6, 16, 36, 0.98) 100%)",
             boxShadow:
-              "0 8px 32px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.07) inset",
-            maxHeight: "300px",
+              "0 16px 40px rgba(0,0,0,0.6), 0 0 20px rgba(34,197,217,0.1)",
+            maxHeight: "260px",
           }}
         >
-          <div className="px-3 pt-3 pb-2 flex items-center justify-between border-b border-white/6 flex-shrink-0">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-white/40">
-              {filtered.length} Localidade{filtered.length !== 1 ? "s" : ""}
+          <div className="px-4 py-2.5 flex items-center justify-between border-b border-white/6 flex-shrink-0 bg-black/20">
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-white/50 flex items-center gap-1.5">
+              <Layers size={11} className="text-cyan-400" />
+              <span>{filtered.length} Localidades</span>
             </span>
-            <span className="text-[10px] text-white/25">Toque para ir</span>
+            <span className="text-[10px] text-cyan-300/70 font-medium">
+              Toque para navegar
+            </span>
           </div>
 
-          <div className="overflow-y-auto flex-1 p-1.5">
+          <div className="overflow-y-auto flex-1 p-2 space-y-1">
             {filtered.length === 0 ? (
-              <div className="p-4 text-center text-[11px] text-white/35">
-                Nenhum ponto encontrado com os filtros atuais.
+              <div className="py-8 text-center text-xs text-white/40 flex flex-col items-center gap-1">
+                <span>Nenhum ponto encontrado.</span>
+                <button
+                  onClick={setAllCategories}
+                  className="text-[11px] text-cyan-400 underline cursor-pointer mt-1"
+                >
+                  Restaurar filtros
+                </button>
               </div>
             ) : (
               filtered.map((a) => {
@@ -207,31 +238,41 @@ export function Sidebar() {
                   <button
                     key={a.id}
                     onClick={() => handleSelect(a)}
-                    className="w-full flex items-center gap-2 px-2.5 py-2 rounded-xl transition-all cursor-pointer text-left my-0.5 border border-transparent active:scale-[0.98]"
+                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-2xl transition-all cursor-pointer text-left border active:scale-[0.98] group"
                     style={{
-                      background: isSelected ? cfg.bg : "transparent",
-                      borderColor: isSelected ? cfg.color + "35" : "transparent",
+                      background: isSelected
+                        ? cfg.bg
+                        : "rgba(255,255,255,0.03)",
+                      borderColor: isSelected
+                        ? cfg.color + "45"
+                        : "rgba(255,255,255,0.05)",
                     }}
                   >
-                    <span className="text-base flex-shrink-0 leading-none">{cfg.icon}</span>
+                    <span className="text-base shrink-0 leading-none group-hover:scale-110 transition-transform">
+                      {cfg.icon}
+                    </span>
                     <div className="flex-1 min-w-0">
                       <div
-                        className="text-xs font-semibold truncate leading-tight"
+                        className="text-xs font-bold truncate leading-tight"
                         style={{
                           color: isSelected
                             ? cfg.color
-                            : "rgba(255,255,255,0.88)",
+                            : "rgba(255,255,255,0.92)",
                         }}
                       >
                         {a.name}
                       </div>
-                      <div className="text-[10px] text-white/35 truncate mt-0.5">
-                        {a.city} · ★ {a.rating.toFixed(1)}
+                      <div className="text-[10px] text-white/40 truncate flex items-center gap-1 mt-0.5">
+                        <MapPin size={9} className="text-cyan-400/70" />
+                        <span>{a.city}</span>
+                        <span>·</span>
+                        <Star size={9} className="text-amber-400 fill-amber-400" />
+                        <span>{a.rating.toFixed(1)}</span>
                       </div>
                     </div>
                     {isSelected && (
                       <div
-                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        className="w-2 h-2 rounded-full shrink-0 animate-pulse"
                         style={{ background: cfg.color }}
                       />
                     )}

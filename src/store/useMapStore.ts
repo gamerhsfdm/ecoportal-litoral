@@ -99,7 +99,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
   showRoutesModal: false,
   showEventsModal: false,
   isTotemActive: false,
-  sidebarOpen: true,
+  sidebarOpen: false,
 
   activeRoute: null,
   currentStopIndex: 0,
@@ -156,6 +156,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
       activeRoute: route,
       currentStopIndex: 0,
       showRoutesModal: false,
+      sidebarOpen: false,
       viewState: {
         ...get().viewState,
         longitude: firstStop ? firstStop.coordinates[0] : route.coordinates[0][0],
@@ -205,6 +206,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
         selectedAttraction: null,
         selectedEcoArea: null,
         showEventsModal: false,
+        sidebarOpen: false,
         viewState: {
           ...state.viewState,
           longitude: event.coordinates[0],

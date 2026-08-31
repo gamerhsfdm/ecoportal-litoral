@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// Subsitua 'mapbox-gl/dist/mapbox-gl.css' por:
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "EcoPortal do Litoral - Paranaguá & Pontal do Sul",
+  title: "EcoPortal Litoral — Turismo & Preservação no Paraná",
   description:
-    "Explore pontos turísticos e a história do litoral paranaense em 3D.",
+    "Portal interativo de turismo, roteiros ecológicos, tábua de marés e patrimônio histórico de Pontal do Paraná, Paranaguá e Ilha do Mel.",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -19,6 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+      </head>
       <body className={inter.className} suppressHydrationWarning>
         {children}
       </body>

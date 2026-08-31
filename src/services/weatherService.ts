@@ -6,6 +6,52 @@ import {
   WeatherForecastDay,
 } from "@/types";
 
+// Coordinates and specific geographic details per coastal area
+export const CITY_GEO: Record<
+  string,
+  {
+    name: string;
+    lat: number;
+    lng: number;
+    tideDelayMinutes: number;
+    tideRangeScale: number;
+    crossingFrom: string;
+  }
+> = {
+  "Pontal do Paraná": {
+    name: "Pontal do Paraná",
+    lat: -25.5697,
+    lng: -48.3509,
+    tideDelayMinutes: 0,
+    tideRangeScale: 1.0,
+    crossingFrom: "Terminal Ponta do Poço → Ilha do Mel",
+  },
+  Paranaguá: {
+    name: "Paranaguá",
+    lat: -25.5209,
+    lng: -48.5097,
+    tideDelayMinutes: 45, // Estuarine lag inside the deep bay
+    tideRangeScale: 1.18, // Higher tidal amplitude inside the bay
+    crossingFrom: "Rua da Praia → Ilha dos Valadares & Ilha do Mel",
+  },
+  "Ilha do Mel": {
+    name: "Ilha do Mel",
+    lat: -25.5391,
+    lng: -48.2909,
+    tideDelayMinutes: -15, // Open oceanic headland
+    tideRangeScale: 0.95,
+    crossingFrom: "Farol das Conchas & Encantadas (Mar Aberto)",
+  },
+  Todos: {
+    name: "Litoral do Paraná",
+    lat: -25.545,
+    lng: -48.43,
+    tideDelayMinutes: 0,
+    tideRangeScale: 1.0,
+    crossingFrom: "Complexo Estuarino e Baías do Paraná",
+  },
+};
+
 // WMO Weather interpretation codes (Open-Meteo standard)
 function interpretWeatherCode(code: number): string {
   if (code === 0) return "Céu limpo e ensolarado";
@@ -19,13 +65,17 @@ function interpretWeatherCode(code: number): string {
   return "Tempo estável";
 }
 
-// Generate realistic daily tide cycle for Baía de Paranaguá / Pontal
-export function calculateLitoralTides(date: Date = new Date()): TideDay {
+// Generate realistic daily tide cycle adjusted per city and date
+export function calculateLitoralTides(
+  cityName: string = "Pontal do Paraná",
+  date: Date = new Date()
+): TideDay {
+  const geo = CITY_GEO[cityName] || CITY_GEO["Pontal do Paraná"];
   const day = date.getDate();
   const month = date.getMonth();
 
-  // Semidiurnal tide calculation (approx 12h 25m cycle with lunar offset)
-  const baseOffsetMinutes = (day * 50 + month * 30) % 720;
+  // Semidiurnal tide calculation (approx 12h 25m cycle with lunar & local offset)
+  const baseOffsetMinutes = (day * 50 + month * 30 + geo.tideDelayMinutes + 1440) % 720;
   const m1 = (270 + baseOffsetMinutes) % 1440; // High tide 1
   const m2 = (m1 + 372) % 1440; // Low tide 1
   const m3 = (m2 + 372) % 1440; // High tide 2
@@ -39,12 +89,22 @@ export function calculateLitoralTides(date: Date = new Date()): TideDay {
     return `${h}:${m}`;
   };
 
+  const scale = geo.tideRangeScale;
   const tides: TideEvent[] = [
-    { time: formatTime(m1), type: "Alta" as const, height: 1.8 },
-    { time: formatTime(m2), type: "Baixa" as const, height: 0.4 },
-    { time: formatTime(m3), type: "Alta" as const, height: 1.9 },
-    { time: formatTime(m4), type: "Baixa" as const, height: 0.3 },
+    { time: formatTime(m1), type: "Alta" as const, height: Number((1.8 * scale).toFixed(2)) },
+    { time: formatTime(m2), type: "Baixa" as const, height: Number((0.4 * scale).toFixed(2)) },
+    { time: formatTime(m3), type: "Alta" as const, height: Number((1.9 * scale).toFixed(2)) },
+    { time: formatTime(m4), type: "Baixa" as const, height: Number((0.3 * scale).toFixed(2)) },
   ].sort((a, b) => a.time.localeCompare(b.time));
+
+  const crossingSafety: "Excelente" | "Boa" | "Atenção" | "Desfavorável" = "Excelente";
+  let crossingTip = `Condições ideais para navegação e travessia (${geo.crossingFrom}).`;
+
+  if (cityName === "Ilha do Mel") {
+    crossingTip = "Maré propícia para travessia de lancha e caminhada na Gruta das Encantadas.";
+  } else if (cityName === "Paranaguá") {
+    crossingTip = "Canal do Rio Itiberê calmo com marés regulares para embarcações e pesca.";
+  }
 
   return {
     date: date.toLocaleDateString("pt-BR", {
@@ -53,31 +113,33 @@ export function calculateLitoralTides(date: Date = new Date()): TideDay {
       month: "short",
     }),
     tides,
-    currentLevel: "Maré em vazante (descendo)",
-    crossingSafety: "Excelente",
-    crossingTip:
-      "Condições ideais para travessia em lanchas rápidas e visitação de praias e grutas.",
+    currentLevel: "Maré em ciclo regular estuarino",
+    crossingSafety,
+    crossingTip,
   };
 }
 
-let cachedData: WeatherData | null = null;
-let lastFetchTime = 0;
-const CACHE_TTL = 10 * 60 * 1000; // 10 minutes cache
+// In-memory cache per city
+const cacheStore: Record<string, { data: WeatherData; timestamp: number }> = {};
+const CACHE_TTL = 8 * 60 * 1000; // 8 minutes cache
 
 export async function fetchLitoralWeather(
-  city: string = "Pontal do Paraná / Paranaguá",
+  city: string = "Pontal do Paraná",
 ): Promise<WeatherData> {
+  const geo = CITY_GEO[city] || CITY_GEO["Pontal do Paraná"];
+  const cacheKey = geo.name;
   const now = Date.now();
-  if (cachedData && now - lastFetchTime < CACHE_TTL) {
-    return cachedData;
+
+  if (cacheStore[cacheKey] && now - cacheStore[cacheKey].timestamp < CACHE_TTL) {
+    return cacheStore[cacheKey].data;
   }
 
   try {
-    const lat = -25.54;
-    const lng = -48.43;
+    const lat = geo.lat;
+    const lng = geo.lng;
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=America%2FSao_Paulo`;
 
-    const res = await fetch(url, { next: { revalidate: 600 } });
+    const res = await fetch(url, { next: { revalidate: 480 } });
     if (!res.ok) throw new Error("Falha ao consultar API Open-Meteo");
 
     const data = await res.json();
@@ -114,21 +176,21 @@ export async function fetchLitoralWeather(
         };
       });
 
-    const tides = calculateLitoralTides(new Date());
+    const tides = calculateLitoralTides(geo.name, new Date());
 
-    // Adjust crossing advice according to wind speed
-    if (windKnots > 20) {
+    // Adjust crossing advice based on live wind speed
+    if (windKnots > 22) {
       tides.crossingSafety = "Atenção";
       tides.crossingTip =
-        "Ventos fortes no canal da Galheta. Consulte a capitania antes de embarcar.";
+        `Ventos fortes (${windKnots} nós) na região de ${geo.name}. Consulte a Capitania dos Portos antes de navegar.`;
     } else if (windKnots > 28) {
       tides.crossingSafety = "Desfavorável";
       tides.crossingTip =
-        "Mar agitado. Travessias sujeitas a atrasos ou cancelamentos preventivos.";
+        `Mar agitado com rajadas de ${windKmh} km/h. Travessias marítimas com recomendação de cautela máxima.`;
     }
 
     const result: WeatherData = {
-      city,
+      city: geo.name,
       current,
       forecast,
       tides,
@@ -138,68 +200,39 @@ export async function fetchLitoralWeather(
       }),
     };
 
-    cachedData = result;
-    lastFetchTime = now;
+    cacheStore[cacheKey] = { data: result, timestamp: now };
     return result;
   } catch {
-    // Fallback resilient offline state
+    // Fallback offline state per city
     const fallbackCurrent: WeatherCurrent = {
-      temp: 26,
-      apparentTemp: 27,
+      temp: geo.name === "Paranaguá" ? 27 : geo.name === "Ilha do Mel" ? 25 : 26,
+      apparentTemp: geo.name === "Paranaguá" ? 29 : 26,
       conditionCode: 1,
       condition: "Ensolarado com brisa marítima",
-      windSpeed: 14,
+      windSpeed: geo.name === "Ilha do Mel" ? 18 : 12,
       windDirection: 110,
-      windKnots: 8,
+      windKnots: geo.name === "Ilha do Mel" ? 10 : 7,
       precipitationProb: 15,
-      humidity: 78,
+      humidity: 76,
       uvIndex: 7,
     };
 
     const fallbackForecast: WeatherForecastDay[] = [
-      {
-        date: "Hoje",
-        tempMax: 28,
-        tempMin: 21,
-        condition: "Ensolarado",
-        precipitationProb: 10,
-      },
-      {
-        date: "Amanhã",
-        tempMax: 27,
-        tempMin: 20,
-        condition: "Parcialmente nublado",
-        precipitationProb: 20,
-      },
-      {
-        date: "Sex",
-        tempMax: 29,
-        tempMin: 22,
-        condition: "Sol entre nuvens",
-        precipitationProb: 15,
-      },
-      {
-        date: "Sáb",
-        tempMax: 26,
-        tempMin: 20,
-        condition: "Pancadas rápidas",
-        precipitationProb: 40,
-      },
-      {
-        date: "Dom",
-        tempMax: 27,
-        tempMin: 21,
-        condition: "Ensolarado",
-        precipitationProb: 10,
-      },
+      { date: "Hoje", tempMax: 28, tempMin: 21, condition: "Ensolarado", precipitationProb: 10 },
+      { date: "Amanhã", tempMax: 27, tempMin: 20, condition: "Parcialmente nublado", precipitationProb: 20 },
+      { date: "Sex", tempMax: 29, tempMin: 22, condition: "Sol entre nuvens", precipitationProb: 15 },
+      { date: "Sáb", tempMax: 26, tempMin: 20, condition: "Pancadas rápidas", precipitationProb: 35 },
+      { date: "Dom", tempMax: 27, tempMin: 21, condition: "Ensolarado", precipitationProb: 10 },
     ];
 
-    return {
-      city,
+    const fallbackResult: WeatherData = {
+      city: geo.name,
       current: fallbackCurrent,
       forecast: fallbackForecast,
-      tides: calculateLitoralTides(new Date()),
-      updatedAt: "Atualizado",
+      tides: calculateLitoralTides(geo.name, new Date()),
+      updatedAt: "Atualizado agora",
     };
+
+    return fallbackResult;
   }
 }

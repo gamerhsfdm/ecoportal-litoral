@@ -72,6 +72,13 @@ html, body {
   color: rgba(255,255,255,0.5) !important;
 }
 
+/* Hide default maplibre compass/controls on bottom-left to avoid colliding with custom UI */
+.maplibregl-ctrl-bottom-left,
+.maplibregl-ctrl-compass,
+.maplibregl-ctrl-scale {
+  display: none !important;
+}
+
 /* Map popups: MapLibre ships with a white content surface by default. */
 .maplibregl-popup {
   max-width: min(320px, calc(100vw - 1.25rem)) !important;

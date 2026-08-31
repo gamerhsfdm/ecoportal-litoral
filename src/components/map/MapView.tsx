@@ -132,7 +132,7 @@ export function MapView({ mapRef }: MapViewProps) {
     (evt: { viewState: typeof viewState }) => {
       setViewState(evt.viewState);
     },
-    [setViewState]
+    [setViewState],
   );
 
   const handleAttractionClick = useCallback(
@@ -144,7 +144,7 @@ export function MapView({ mapRef }: MapViewProps) {
         duration: 1200,
       });
     },
-    [setSelectedAttraction, mapRef]
+    [setSelectedAttraction, mapRef],
   );
 
   const handleStopClick = useCallback(
@@ -156,7 +156,7 @@ export function MapView({ mapRef }: MapViewProps) {
         duration: 1000,
       });
     },
-    [setCurrentStopIndex, mapRef]
+    [setCurrentStopIndex, mapRef],
   );
 
   // Handle click on GeoJSON Eco Layer polygon
@@ -166,12 +166,10 @@ export function MapView({ mapRef }: MapViewProps) {
       const features = e.features;
       if (features && features.length > 0) {
         const ecoFeature = features.find(
-          (f) => f.layer.id === "eco-polygons-fill"
+          (f) => f.layer.id === "eco-polygons-fill",
         );
         if (ecoFeature && ecoFeature.properties?.id) {
-          const area = ecoAreas.find(
-            (a) => a.id === ecoFeature.properties?.id
-          );
+          const area = ecoAreas.find((a) => a.id === ecoFeature.properties?.id);
           if (area) {
             setSelectedEcoArea(area);
             mapRef.current?.flyTo({
@@ -183,7 +181,7 @@ export function MapView({ mapRef }: MapViewProps) {
         }
       }
     },
-    [showEcoLayer, setSelectedEcoArea, mapRef]
+    [showEcoLayer, setSelectedEcoArea, mapRef],
   );
 
   return (
@@ -284,7 +282,8 @@ export function MapView({ mapRef }: MapViewProps) {
                   className="relative cursor-pointer group flex items-center justify-center"
                   style={{
                     transform: isCurrentStop ? "scale(1.3)" : "scale(1)",
-                    transition: "transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                    transition:
+                      "transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
                   }}
                 >
                   {isCurrentStop && (
@@ -449,8 +448,10 @@ export function MapView({ mapRef }: MapViewProps) {
             <div
               className="w-[min(19rem,calc(100vw-1.25rem))] rounded-2xl overflow-hidden shadow-2xl animate-fade-in border border-white/15 text-white"
               style={{
-                background: "linear-gradient(155deg, rgba(8, 25, 49, 0.99), rgba(5, 16, 34, 0.99))",
-                boxShadow: "0 18px 46px rgba(0,0,0,0.56), 0 1px 0 rgba(255,255,255,0.08) inset",
+                background:
+                  "linear-gradient(155deg, rgba(8, 25, 49, 0.99), rgba(5, 16, 34, 0.99))",
+                boxShadow:
+                  "0 18px 46px rgba(0,0,0,0.56), 0 1px 0 rgba(255,255,255,0.08) inset",
               }}
             >
               <div className="relative h-36 w-full overflow-hidden bg-slate-900">

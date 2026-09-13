@@ -86,7 +86,13 @@ interface MapStore {
 
   setViewState: (viewState: MapViewState) => void;
   setUserLocation: (loc: { lat: number; lng: number } | null) => void;
-  flyToLocation: (lng: number, lat: number, zoom?: number, pitch?: number, bearing?: number) => void;
+  flyToLocation: (
+    lng: number,
+    lat: number,
+    zoom?: number,
+    pitch?: number,
+    bearing?: number,
+  ) => void;
   resetToOverview: () => void;
 }
 
@@ -159,8 +165,12 @@ export const useMapStore = create<MapStore>((set, get) => ({
       sidebarOpen: false,
       viewState: {
         ...get().viewState,
-        longitude: firstStop ? firstStop.coordinates[0] : route.coordinates[0][0],
-        latitude: firstStop ? firstStop.coordinates[1] : route.coordinates[0][1],
+        longitude: firstStop
+          ? firstStop.coordinates[0]
+          : route.coordinates[0][0],
+        latitude: firstStop
+          ? firstStop.coordinates[1]
+          : route.coordinates[0][1],
         zoom: 13.5,
         pitch: 45,
       },
@@ -219,12 +229,14 @@ export const useMapStore = create<MapStore>((set, get) => ({
 
   setShowEcoLayer: (show) =>
     set((state) => ({
-      showEcoLayer: typeof show === "function" ? show(state.showEcoLayer) : show,
+      showEcoLayer:
+        typeof show === "function" ? show(state.showEcoLayer) : show,
     })),
 
   setIsSatellite: (isSat) =>
     set((state) => ({
-      isSatellite: typeof isSat === "function" ? isSat(state.isSatellite) : isSat,
+      isSatellite:
+        typeof isSat === "function" ? isSat(state.isSatellite) : isSat,
     })),
 
   setPitch3D: (pitch) =>
@@ -264,7 +276,8 @@ export const useMapStore = create<MapStore>((set, get) => ({
       return { activeCategories: next };
     }),
 
-  setAllCategories: () => set({ activeCategories: new Set<Category>(ALL_CATEGORIES) }),
+  setAllCategories: () =>
+    set({ activeCategories: new Set<Category>(ALL_CATEGORIES) }),
 
   setActiveCity: (city) => set({ activeCity: city }),
 

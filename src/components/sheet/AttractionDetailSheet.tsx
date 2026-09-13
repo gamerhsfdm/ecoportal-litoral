@@ -30,11 +30,7 @@ import {
 } from "lucide-react";
 
 export function AttractionDetailSheet() {
-  const {
-    detailAttraction,
-    setDetailAttraction,
-    userLocation,
-  } = useMapStore();
+  const { detailAttraction, setDetailAttraction, userLocation } = useMapStore();
   const [activeImg, setActiveImg] = useState(0);
   const [copied, setCopied] = useState(false);
   const { isPlaying, toggle, stop } = useSpeechNarration();
@@ -59,26 +55,29 @@ export function AttractionDetailSheet() {
         userLocation.lat,
         userLocation.lng,
         detailAttraction.lat,
-        detailAttraction.lng
+        detailAttraction.lng,
       )
     : null;
 
   const isIsland = detailAttraction.city === "Ilha do Mel";
-  const travelTime = distanceKm !== null ? estimateTravelTime(distanceKm, isIsland) : null;
+  const travelTime =
+    distanceKm !== null ? estimateTravelTime(distanceKm, isIsland) : null;
 
   // Narration text construction
   const narrationText = `${detailAttraction.name}. Localizado em ${detailAttraction.city}. ${detailAttraction.description} ${detailAttraction.tip ? `Dica de visitação: ${detailAttraction.tip}` : ""} ${detailAttraction.ecoTip ? `Dica ecológica: ${detailAttraction.ecoTip}` : ""}`;
 
   const handleShare = () => {
     if (navigator.share) {
-      navigator.share({
-        title: detailAttraction.name,
-        text: `Conheça ${detailAttraction.name} no EcoPortal Litoral!`,
-        url: window.location.href,
-      }).catch(() => {});
+      navigator
+        .share({
+          title: detailAttraction.name,
+          text: `Conheça ${detailAttraction.name} no EcoPortal Litoral!`,
+          url: window.location.href,
+        })
+        .catch(() => {});
     } else {
       navigator.clipboard.writeText(
-        `${detailAttraction.name} - ${getGoogleMapsUrl(detailAttraction.lat, detailAttraction.lng, detailAttraction.name)}`
+        `${detailAttraction.name} - ${getGoogleMapsUrl(detailAttraction.lat, detailAttraction.lng, detailAttraction.name)}`,
       );
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -145,7 +144,7 @@ export function AttractionDetailSheet() {
                   setActiveImg(
                     (prev) =>
                       (prev - 1 + detailAttraction.gallery.length) %
-                      detailAttraction.gallery.length
+                      detailAttraction.gallery.length,
                   )
                 }
                 className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/75 text-white flex items-center justify-center border border-white/10 transition-colors cursor-pointer"
@@ -155,7 +154,7 @@ export function AttractionDetailSheet() {
               <button
                 onClick={() =>
                   setActiveImg(
-                    (prev) => (prev + 1) % detailAttraction.gallery.length
+                    (prev) => (prev + 1) % detailAttraction.gallery.length,
                   )
                 }
                 className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/75 text-white flex items-center justify-center border border-white/10 transition-colors cursor-pointer"
@@ -265,7 +264,8 @@ export function AttractionDetailSheet() {
 
             {travelTime && (
               <div className="text-xs text-white/80">
-                ⏱️ Tempo estimado: <span className="font-semibold text-white">{travelTime}</span>
+                ⏱️ Tempo estimado:{" "}
+                <span className="font-semibold text-white">{travelTime}</span>
               </div>
             )}
 
@@ -275,7 +275,7 @@ export function AttractionDetailSheet() {
                 href={getGoogleMapsUrl(
                   detailAttraction.lat,
                   detailAttraction.lng,
-                  detailAttraction.name
+                  detailAttraction.name,
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -299,7 +299,7 @@ export function AttractionDetailSheet() {
                 href={getAppleMapsUrl(
                   detailAttraction.lat,
                   detailAttraction.lng,
-                  detailAttraction.name
+                  detailAttraction.name,
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -335,7 +335,8 @@ export function AttractionDetailSheet() {
 
           {/* Practical Info cards (Hours, Tips, Biome) */}
           <div className="space-y-2.5">
-            {(detailAttraction.address || detailAttraction.altitudeM !== undefined) && (
+            {(detailAttraction.address ||
+              detailAttraction.altitudeM !== undefined) && (
               <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-white/5 border border-white/10">
                 <div className="w-9 h-9 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0 text-cyan-300">
                   <MapPin size={16} />
@@ -362,8 +363,14 @@ export function AttractionDetailSheet() {
               <div className="flex items-center gap-3 px-3.5 py-2.5 rounded-2xl bg-amber-500/8 border border-amber-400/15 text-xs text-amber-100/80">
                 <Clock size={14} className="text-amber-300 shrink-0" />
                 <span>
-                  Período de referência: <strong className="text-amber-100">{detailAttraction.startDate}</strong>
-                  {detailAttraction.endDate && detailAttraction.endDate !== detailAttraction.startDate ? ` — ${detailAttraction.endDate}` : ""}
+                  Período de referência:{" "}
+                  <strong className="text-amber-100">
+                    {detailAttraction.startDate}
+                  </strong>
+                  {detailAttraction.endDate &&
+                  detailAttraction.endDate !== detailAttraction.startDate
+                    ? ` — ${detailAttraction.endDate}`
+                    : ""}
                 </span>
               </div>
             )}
@@ -434,7 +441,29 @@ export function AttractionDetailSheet() {
             {detailAttraction.biome && (
               <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-white/5 border border-white/10 text-xs text-white/60">
                 <ShieldCheck size={14} className="text-emerald-400 shrink-0" />
-                <span>Bioma: <strong className="text-white/80">{detailAttraction.biome}</strong></span>
+                <span>
+                  Bioma:{" "}
+                  <strong className="text-white/80">
+                    {detailAttraction.biome}
+                  </strong>
+                </span>
+              </div>
+            )}
+
+            {detailAttraction.source && (
+              <div className="flex items-start gap-2 px-3.5 py-2.5 rounded-2xl bg-cyan-950/20 border border-cyan-500/20 text-xs text-cyan-200/80">
+                <span className="font-semibold text-cyan-300 shrink-0">
+                  🏛️ Fonte:
+                </span>
+                <span className="leading-relaxed">
+                  {detailAttraction.source}
+                </span>
+              </div>
+            )}
+
+            {detailAttraction.imageCredit && (
+              <div className="text-[11px] text-white/40 px-1 italic">
+                📷 Foto: {detailAttraction.imageCredit}
               </div>
             )}
           </div>
@@ -443,7 +472,8 @@ export function AttractionDetailSheet() {
           <div className="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/5 text-xs text-white/40">
             <span className="flex items-center gap-1.5">
               <MapPin size={13} />
-              {detailAttraction.lat.toFixed(4)}, {detailAttraction.lng.toFixed(4)}
+              {detailAttraction.lat.toFixed(4)},{" "}
+              {detailAttraction.lng.toFixed(4)}
             </span>
             {copied && (
               <span className="text-emerald-400 font-semibold">

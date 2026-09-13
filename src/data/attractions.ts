@@ -49,7 +49,357 @@ export const CATEGORY_CONFIG: Record<
 };
 
 export const attractions: Attraction[] = [
-  // Pontal do Paraná
+  // ============================================================
+  // PONTAL DO PARANÁ — TURISMO E NATUREZA
+  // ============================================================
+
+  {
+    id: "pontal-sul",
+    name: "Balneário de Pontal do Sul",
+    category: "Praias",
+    city: "Pontal do Paraná",
+    lat: -25.5737,
+    lng: -48.3577,
+    altitudeM: 5,
+    address: "Pontal do Sul, Pontal do Paraná, Paraná, Brasil",
+
+    shortDesc:
+      "Balneário costeiro de Pontal do Paraná, conhecido pelas praias, cultura caiçara e embarques para a Ilha do Mel.",
+
+    description:
+      "Balneário localizado no litoral de Pontal do Paraná, conhecido por suas praias, paisagens costeiras e por ser um dos principais pontos de embarque para a Ilha do Mel. A região também oferece opções de lazer, gastronomia e contato com a natureza. Pontal do Sul possui grande importância histórica ligada à pesca tradicional e ao desenvolvimento turístico da costa paranaense.",
+
+    image:
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pontal_do_Paran%C3%A1_-_Praia.jpg",
+
+    gallery: [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pontal_do_Paran%C3%A1_-_Praia.jpg",
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pontal_do_Paran%C3%A1.jpg",
+    ],
+
+    rating: 4.7,
+
+    highlights: [
+      "Embarque para a Ilha do Mel",
+      "Cultura caiçara",
+      "Pesca artesanal",
+      "Praias e paisagens costeiras",
+      "Gastronomia local",
+    ],
+
+    hours: "Acesso livre 24h",
+
+    tip: "Aproveite a orla no início da manhã para observar a movimentação dos barcos de pesca e a paisagem da Baía de Paranaguá.",
+
+    biome: "Restinga e Estuário da Baía de Paranaguá",
+
+    ecoTip:
+      "Não deixe lixo na praia e mantenha distância segura da fauna marinha.",
+
+    preservationStatus: "Área Costeira e Estuarina",
+
+    source:
+      "Prefeitura Municipal de Pontal do Paraná / Informações Turísticas Municipais",
+
+    imageCredit: "AndreWormsbecker — Wikimedia Commons — CC BY-SA 4.0",
+  },
+
+  {
+    id: "ilhas-dos-currais",
+    name: "Parque Nacional Marinho das Ilhas dos Currais",
+    category: "Natureza",
+    city: "Pontal do Paraná",
+    lat: -25.73889,
+    lng: -48.35139,
+    altitudeM: 0,
+
+    address:
+      "Oceano Atlântico, em frente à costa de Pontal do Paraná, próximo a Praia de Leste",
+
+    shortDesc:
+      "Parque Nacional Marinho formado por três ilhas oceânicas, importante área de conservação da fauna marinha e de aves.",
+
+    description:
+      "O Parque Nacional Marinho das Ilhas dos Currais é formado por três ilhas localizadas em frente ao litoral paranaense. A unidade protege ecossistemas marinhos e costeiros e é reconhecida pela importância para aves marinhas e atividades de pesquisa e mergulho.",
+
+    image:
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ilha_dos_Currais.JPG",
+
+    gallery: [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ilha_dos_Currais.JPG",
+    ],
+
+    rating: 4.9,
+
+    highlights: [
+      "Parque Nacional Marinho",
+      "Três ilhas oceânicas",
+      "Proteção da fauna marinha",
+      "Importância para aves marinhas",
+      "Mergulho e pesquisa científica",
+    ],
+
+    hours: "Visitação náutica conforme regras da unidade",
+
+    tip: "Consulte previamente as regras de visitação e utilize operadores autorizados.",
+
+    biome: "Ecossistema Insular Oceânico e Costeiro",
+
+    ecoTip:
+      "Não desembarque em áreas proibidas e nunca se aproxime ou alimente animais silvestres.",
+
+    preservationStatus: "Unidade de Conservação de Proteção Integral",
+
+    source: "Viaje Paraná / ICMBio",
+
+    imageCredit: "DAR7 e Eloy Olindo Setti — Wikimedia Commons — CC BY-SA 3.0",
+  },
+
+  {
+    id: "estrada-ecologica-guaraguacu",
+    name: "Estrada Ecológica do Guaraguaçu",
+    category: "Natureza",
+    city: "Pontal do Paraná",
+    lat: -25.667177,
+    lng: -48.511427,
+    altitudeM: 12,
+
+    address:
+      "Estrada Domingos Mesquita Santana, 601, Pontal do Paraná – PR, Brasil",
+
+    shortDesc:
+      "Estrada ecológica que acompanha a região do Rio Guaraguaçu e dá acesso ao Sambaqui do Guaraguaçu.",
+
+    description:
+      "A Estrada Ecológica do Guaraguaçu, oficialmente denominada Estrada Domingos Mesquita Santana, acompanha a região do Rio Guaraguaçu e integra o circuito ecocultural do município. O caminho dá acesso ao Sambaqui do Guaraguaçu e passa por áreas de Mata Atlântica e ambientes naturais.",
+
+    image: "/images/estrada-ecologica-do-guaraguacu.jpg",
+
+    gallery: ["/images/estrada-ecologica-do-guaraguacu.jpg"],
+
+    rating: 4.6,
+
+    highlights: [
+      "Circuito Ecocultural do Guaraguaçu",
+      "Acesso ao Sambaqui do Guaraguaçu",
+      "Mata Atlântica",
+      "Paisagens naturais",
+      "Caminhadas e cicloturismo",
+    ],
+
+    hours: "Acesso livre durante o dia",
+
+    tip: "Leve água, repelente e utilize calçados adequados para caminhada.",
+
+    biome: "Floresta Ombrófila Densa de Terras Baixas",
+
+    ecoTip:
+      "Não retire plantas, animais ou materiais naturais e leve todo o lixo produzido.",
+
+    preservationStatus: "Área de Preservação Ambiental e Corredor Ecológico",
+
+    source:
+      "Prefeitura de Pontal do Paraná — Circuito Ecocultural do Guaraguaçu",
+
+    imageCredit: "Wikimedia Commons — CC BY-SA 4.0",
+  },
+
+  {
+    id: "comunidade-maciel",
+    name: "Comunidade do Maciel (Ilha do Maciel)",
+    category: "Cultura",
+    city: "Pontal do Paraná",
+    lat: -25.556472,
+    lng: -48.403206,
+    altitudeM: 16,
+
+    address: "Comunidade do Maciel, Pontal do Paraná – PR, CEP 83255-000",
+
+    shortDesc:
+      "Comunidade tradicional caiçara formada por famílias de pescadores artesanais.",
+
+    description:
+      "Vila tradicional onde vivem famílias de pescadores artesanais. A comunidade possui casas coloridas, canoas, redes de pesca e mantém tradições ligadas à cultura caiçara. A região também recebe uma etapa da Caminhada Internacional na Natureza — Circuito Ilha do Maciel.",
+
+    image: "/images/comunidade-maciel.jpg",
+
+    gallery: ["/images/comunidade-maciel.jpg"],
+
+    rating: 4.7,
+
+    highlights: [
+      "Comunidade tradicional caiçara",
+      "Pesca artesanal",
+      "Casas e canoas tradicionais",
+      "Cultura local",
+      "Caminhada Internacional na Natureza",
+    ],
+
+    hours: "Visitação durante o período diurno",
+
+    tip: "Valorize os moradores e o turismo comunitário durante a visita.",
+
+    biome: "Estuário e Manguezal da Baía de Paranaguá",
+
+    ecoTip:
+      "Respeite as áreas residenciais, os pescadores e os ambientes naturais da comunidade.",
+
+    preservationStatus: "Comunidade Tradicional Caiçara",
+
+    source:
+      "Prefeitura de Pontal do Paraná — Comunidade do Maciel / Ilha do Maciel",
+
+    imageCredit: "Wikimedia Commons — CC BY-SA 4.0",
+  },
+
+  // ============================================================
+  // HISTÓRIA
+  // ============================================================
+
+  {
+    id: "sambaqui-guaraguacu",
+    name: "Sambaqui do Guaraguaçu",
+    category: "História",
+    city: "Pontal do Paraná",
+    lat: -25.6655,
+    lng: -48.5135,
+    altitudeM: 15,
+
+    startDate: "Aproximadamente 2.270 a.C.",
+    endDate: "Tombado em 1982",
+
+    address:
+      "Região do Rio Guaraguaçu, acesso pela Estrada Ecológica, Pontal do Paraná – PR",
+
+    shortDesc:
+      "Importante sítio arqueológico que registra a ocupação humana pré-histórica do litoral paranaense.",
+
+    description:
+      "O Sambaqui do Guaraguaçu é um importante sítio arqueológico localizado no município de Pontal do Paraná. O local é formado por vestígios de antigas populações que habitaram o litoral paranaense há milhares de anos. Os sambaquis são estruturas formadas pelo acúmulo de conchas, restos de animais, peixes e outros materiais utilizados pelas populações que viveram na região. O sítio possui grande importância histórica, arqueológica e cultural e foi tombado pelo Estado do Paraná em 1982.",
+
+    image: "/images/sambaqui-guaraguacu.jpg",
+
+    gallery: ["/images/sambaqui-guaraguacu.jpg"],
+
+    rating: 4.8,
+
+    highlights: [
+      "Datação aproximada de 2.270 a.C.",
+      "Tombamento em 1982",
+      "Sítio arqueológico",
+      "Ocupação humana pré-histórica",
+      "Patrimônio cultural do Paraná",
+    ],
+
+    hours: "Visitação conforme regras do sítio",
+
+    tip: "Não retire, movimente ou recolha qualquer material arqueológico.",
+
+    biome: "Patrimônio Arqueológico e Mata Atlântica",
+
+    ecoTip: "É proibido escavar ou retirar materiais do sítio arqueológico.",
+
+    preservationStatus: "Sítio Arqueológico Tombado pelo Estado do Paraná",
+
+    source: "Governo do Estado do Paraná / Patrimônio Cultural",
+
+    imageCredit: "Patrimônio Cultural do Paraná — CC BY 4.0",
+  },
+
+  {
+    id: "rio-guaraguacu",
+    name: "Rio Guaraguaçu",
+    category: "Natureza",
+    city: "Pontal do Paraná",
+    lat: -25.662,
+    lng: -48.508,
+    altitudeM: 8,
+
+    address: "Bacia Hidrográfica do Rio Guaraguaçu, Pontal do Paraná – PR",
+
+    shortDesc:
+      "Um dos principais rios de Pontal do Paraná, cercado por Mata Atlântica, manguezais e áreas de importância histórica.",
+
+    description:
+      "O Rio Guaraguaçu é um dos principais rios de Pontal do Paraná e possui grande importância ambiental, histórica e cultural. Suas margens apresentam áreas de Mata Atlântica, manguezais e locais relacionados à ocupação humana antiga. A região também é utilizada para passeios de barco, observação da natureza e outras atividades de turismo.",
+
+    image: "/images/rio-guaraguaçu.jpg",
+
+    gallery: ["/images/rio-guaraguaçu.jpg"],
+
+    rating: 4.7,
+
+    highlights: [
+      "Mata Atlântica",
+      "Manguezais",
+      "Passeios de barco",
+      "Observação da natureza",
+      "Ligação com o Sambaqui do Guaraguaçu",
+    ],
+
+    hours: "Atividades náuticas durante o dia",
+
+    tip: "Prefira passeios conduzidos por operadores locais que conheçam a região.",
+
+    biome: "Bacia Fluvial Estuarina e Manguezal",
+
+    ecoTip: "Não jogue resíduos no rio e mantenha distância da fauna.",
+
+    preservationStatus: "Área de Preservação Permanente de Recursos Hídricos",
+
+    source: "Prefeitura de Pontal do Paraná / Viaje Paraná",
+
+    imageCredit: "Wikimedia Commons — CC BY-SA 4.0",
+  },
+
+  {
+    id: "emancipacao-pontal",
+    name: "Emancipação de Pontal do Paraná",
+    category: "História",
+    city: "Pontal do Paraná",
+    lat: -25.5786,
+    lng: -48.3755,
+    altitudeM: 6,
+
+    startDate: "20/12/1995",
+    endDate: "01/01/1997",
+
+    address: "Pontal do Paraná – PR, Brasil",
+
+    shortDesc:
+      "Marco histórico da criação do município de Pontal do Paraná, desmembrado de Paranaguá.",
+
+    description:
+      "Pontal do Paraná fazia parte do município de Paranaguá antes de sua emancipação. O movimento para a criação de um novo município ganhou força durante as décadas de 1980 e 1990. A emancipação foi estabelecida pela Lei Estadual nº 11.252, de 20 de dezembro de 1995, e o município foi oficialmente instalado em 1º de janeiro de 1997.",
+
+    image: "/images/emancipacao-de-pontal-do-parana.jpg",
+
+    gallery: ["/images/emancipacao-de-pontal-do-parana.jpg"],
+
+    rating: 4.6,
+
+    highlights: [
+      "Lei Estadual nº 11.252",
+      "Criação em 20/12/1995",
+      "Instalação em 01/01/1997",
+      "Desmembramento de Paranaguá",
+      "História municipal",
+    ],
+
+    hours: "Patrimônio histórico / acesso público",
+
+    tip: "Conheça também outros pontos históricos e comunidades tradicionais do município.",
+
+    biome: "Área Urbana e Costeira",
+
+    preservationStatus: "Patrimônio Cívico e Histórico Municipal",
+
+    source:
+      "Governo do Estado do Paraná / Prefeitura Municipal de Pontal do Paraná",
+
+    imageCredit: "Prefeitura Municipal de Pontal do Paraná / Wikimedia Commons",
+  },
+
   {
     id: "praia-leste",
     name: "Praia de Leste",
@@ -57,24 +407,48 @@ export const attractions: Attraction[] = [
     city: "Pontal do Paraná",
     lat: -25.5792,
     lng: -48.3783,
-    shortDesc: "Extensa faixa de areia com mar calmo, ideal para famílias e banho de mar.",
+
+    shortDesc:
+      "Um dos balneários mais conhecidos de Pontal do Paraná, com extensa faixa de areia.",
+
     description:
-      "Praia de Leste é um dos balneários mais tradicionais de Pontal do Paraná, com uma longa faixa de areia fina e mar relativamente calmo. Possui boa infraestrutura, com quiosques, restaurantes e fácil acesso. É um destino clássico para famílias que buscam tranquilidade e contato direto com o mar do litoral paranaense.",
+      "Praia de Leste é um dos balneários tradicionais de Pontal do Paraná. A região possui extensa faixa de areia e infraestrutura turística, sendo também a área costeira mais próxima das Ilhas dos Currais.",
+
     image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=500&fit=crop&auto=format",
+      "/images/praia-de-leste.jpg",
+
     gallery: [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=500&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=500&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=800&h=500&fit=crop&auto=format",
+      "/images/praia-de-leste.jpg",
     ],
-    rating: 4.4,
-    highlights: ["Mar calmo", "Acessível", "Infraestrutura completa", "Ideal para famílias"],
+
+    rating: 4.5,
+
+    highlights: [
+      "Extensa faixa de areia",
+      "Balneário tradicional",
+      "Infraestrutura turística",
+      "Proximidade das Ilhas dos Currais",
+    ],
+
     hours: "Aberta 24h",
-    tip: "Visitar no início da manhã para encontrar a praia tranquila e o mar cristalino.",
+
+    tip: "Confira as condições de balneabilidade antes de entrar no mar.",
+
     biome: "Restinga e Zona Costeira",
-    ecoTip: "Ajude a manter a praia limpa. Não deixe plásticos na areia e preserve as dunas com vegetação nativa.",
+
+    ecoTip: "Não deixe lixo na areia e evite áreas de vegetação de restinga.",
+
     preservationStatus: "Área de Monitoramento Ambiental Costeiro",
+
+    source: "Prefeitura Municipal de Pontal do Paraná",
+
+    imageCredit: "Wikimedia Commons — CC BY-SA 4.0",
   },
+
+  // ============================================================
+  // OUTROS BALNEÁRIOS DE PONTAL DO PARANÁ
+  // ============================================================
+
   {
     id: "praia-ipanema",
     name: "Praia Ipanema",
@@ -82,23 +456,41 @@ export const attractions: Attraction[] = [
     city: "Pontal do Paraná",
     lat: -25.5412,
     lng: -48.4023,
-    shortDesc: "Balneário charmoso com ambiente familiar e belo pôr do sol.",
+
+    shortDesc:
+      "Balneário tradicional de Pontal do Paraná com praia, comércio e ambiente residencial.",
+
     description:
-      "Ipanema é um dos balneários mais queridos do litoral paranaense, com casas de veraneio, comércio local e uma comunidade acolhedora. A praia tem areia clara e águas calmas, perfeita para banho e lazer. Nos fins de semana, o balneário ganha vida com visitantes que aproveitam o mar e a gastronomia local.",
-    image:
-      "https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=800&h=500&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=500&fit=crop&auto=format",
-    ],
+      "Ipanema é um dos balneários de Pontal do Paraná. A região combina áreas residenciais, comércio local e acesso à praia.",
+
+    image: "/images/praia-ipanema.jpg",
+
+    gallery: ["/images/praia-ipanema.jpg"],
+
     rating: 4.3,
-    highlights: ["Ambiente familiar", "Pôr do sol", "Comércio local", "Tranquilidade"],
+
+    highlights: [
+      "Praia",
+      "Comércio local",
+      "Ambiente residencial",
+      "Turismo de verão",
+    ],
+
     hours: "Aberta 24h",
-    tip: "Experimente frutos do mar frescos nos restaurantes à beira-mar.",
+
+    tip: "Prefira os horários de menor movimento para aproveitar a orla com mais tranquilidade.",
+
     biome: "Restinga Litorânea",
-    ecoTip: "Evite transitar com veículos sobre as dunas para evitar a erosão da praia.",
-    preservationStatus: "Monitoramento de Balneabilidade IAT",
+
+    ecoTip: "Evite pisar na vegetação de restinga.",
+
+    preservationStatus: "Monitoramento de Balneabilidade",
+
+    source: "Prefeitura Municipal de Pontal do Paraná",
+
+    imageCredit: "Wikimedia Commons — CC BY-SA 4.0",
   },
+
   {
     id: "shangrila",
     name: "Shangri-lá",
@@ -106,45 +498,41 @@ export const attractions: Attraction[] = [
     city: "Pontal do Paraná",
     lat: -25.558,
     lng: -48.393,
-    shortDesc: "Balneário paradisíaco com charme e natureza preservada.",
+
+    shortDesc:
+      "Balneário de Pontal do Paraná com praias e áreas residenciais próximas à natureza.",
+
     description:
-      "Shangri-lá vive à altura do seu nome encantador: um recanto de praias limpas, arborização abundante e atmosfera calma. O balneário tem um perfil mais residencial e preservado, o que garante tranquilidade e contato genuíno com a natureza litorânea paranaense.",
-    image:
-      "https://images.unsplash.com/photo-1596402184320-417e7178b2cd?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1596402184320-417e7178b2cd?w=800&h=500&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=500&fit=crop&auto=format",
-    ],
+      "Shangri-lá é um dos balneários tradicionais de Pontal do Paraná, reunindo áreas residenciais, comércio local e acesso à faixa costeira.",
+
+    image: "/images/shangri-la-pontal-do-parana.jpg",
+
+    gallery: ["/images/shangri-la-pontal-do-parana.jpg"],
+
     rating: 4.5,
-    highlights: ["Natureza preservada", "Arborização", "Atmosfera tranquila", "Pouco movimento"],
-    tip: "Ótimo para caminhadas ao longo da orla ao pôr do sol.",
-    biome: "Faixa de Restinga Preservada",
-    ecoTip: "Respeite as áreas de nidificação de aves marinhas na areia alta.",
-    preservationStatus: "Área de Preservação Permanente (APP) de Orla",
-  },
-  {
-    id: "pontal-sul",
-    name: "Pontal do Sul",
-    category: "Praias",
-    city: "Pontal do Paraná",
-    lat: -25.5697,
-    lng: -48.3509,
-    shortDesc: "Vila de pescadores com praia selvagem e porto de embarque para as ilhas.",
-    description:
-      "Pontal do Sul é o ponto mais a leste do continente no município e o principal portal para a Ilha do Mel e o Parque Nacional Marinho. A vila preserva a rica cultura da pesca artesanal, com barcos coloridos e pescadores tradicionais. Abriga também o Centro de Estudos do Mar (CEM) da UFPR, referência em pesquisas marinhas.",
-    image:
-      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&h=500&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1490197415175-074fd86b1fcc?w=800&h=500&fit=crop&auto=format",
+
+    highlights: [
+      "Praia",
+      "Área residencial",
+      "Vegetação costeira",
+      "Turismo de verão",
     ],
-    rating: 4.6,
-    highlights: ["Porto de pesca", "Cultura artesanal", "Ponto de embarque", "Pesquisa marinha"],
-    tip: "Embarque cedo para a Ilha do Mel para aproveitar o dia todo e observar botos na baía.",
-    biome: "Restinga e Estuário da Baía de Paranaguá",
-    ecoTip: "Avistamento frequente do boto-cinza. Mantenha distância segura e nunca os alimente.",
-    preservationStatus: "Área de Proteção Ambiental Marinha",
+
+    hours: "Aberta 24h",
+
+    tip: "Caminhe pela orla respeitando a vegetação de restinga.",
+
+    biome: "Faixa de Restinga",
+
+    ecoTip: "Não transite com veículos sobre as dunas ou vegetação.",
+
+    preservationStatus: "Área Costeira",
+
+    source: "Prefeitura Municipal de Pontal do Paraná",
+
+    imageCredit: "Wikimedia Commons — CC BY-SA 4.0",
   },
+
   {
     id: "terminal-embarque",
     name: "Terminal de Embarque — Ponta do Poço",
@@ -152,21 +540,39 @@ export const attractions: Attraction[] = [
     city: "Pontal do Paraná",
     lat: -25.5715,
     lng: -48.3485,
-    shortDesc: "Principal terminal marítimo com saídas para Ilha do Mel e Paranaguá.",
+
+    shortDesc:
+      "Região de embarque náutico utilizada para deslocamentos e passeios pelo litoral paranaense.",
+
     description:
-      "O Terminal de Ponta do Poço é o grande hub de transporte aquaviário do litoral paranaense, conectando o continente à Ilha do Mel (Brasília e Encantadas) e às ilhas da Baía de Paranaguá. Possui estrutura com bilheteria oficial, estacionamentos e receptivo turístico com vista espetacular da baía.",
-    image:
-      "https://images.unsplash.com/photo-1566288623394-377af472d80b?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1566288623394-377af472d80b?w=800&h=500&fit=crop&auto=format",
+      "A região de Ponta do Poço possui importância para o transporte e atividades náuticas do litoral de Pontal do Paraná, incluindo deslocamentos em direção à Ilha do Mel e outras áreas da Baía de Paranaguá.",
+
+    image: "/images/terminal-de-embarque-ponta-do-poco.jpg",
+
+    gallery: ["/images/terminal-de-embarque-ponta-do-poco.jpg"],
+
+    rating: 4.4,
+
+    highlights: [
+      "Transporte náutico",
+      "Ilha do Mel",
+      "Baía de Paranaguá",
+      "Atividades turísticas",
     ],
-    rating: 4.2,
-    highlights: ["Saídas para Ilha do Mel", "Barcas diárias", "Paisagem da baía", "Ponto de partida"],
-    hours: "06:00 às 18:00 (saídas a cada 30 min em alta temporada)",
-    tip: "Compre passagem de ida e volta com antecedência para evitar filas no retorno.",
+
+    hours: "Conforme horários das embarcações",
+
+    tip: "Confirme horários e pontos oficiais de embarque antes da viagem.",
+
     biome: "Canal Marítimo da Baía",
-    ecoTip: "Utilize embarcações credenciadas pela Capitania dos Portos e IAT.",
+
+    ecoTip: "Utilize operadores e embarcações autorizados.",
+
+    source: "Prefeitura de Pontal do Paraná",
+
+    imageCredit: "Wikimedia Commons — CC BY-SA 4.0",
   },
+
   {
     id: "saint-hilaire-lange",
     name: "Parque Nacional Saint-Hilaire/Lange",
@@ -174,31 +580,46 @@ export const attractions: Attraction[] = [
     city: "Pontal do Paraná",
     lat: -25.512,
     lng: -48.5,
-    shortDesc: "Área de proteção integral da Mata Atlântica com trilhas, cachoeiras e biodiversidade exuberante.",
+
+    shortDesc:
+      "Unidade de conservação que protege importantes áreas de Mata Atlântica da Serra do Mar.",
+
     description:
-      "O Parque Nacional de Saint-Hilaire/Lange protege mais de 25.000 hectares contíguos de Mata Atlântica que se estendem da serra ao mar. Abriga centenas de espécies de animais raros como a onça-pintada, o papagaio-de-cara-roxa e o jacutinga, além de cachoeiras cristalinas. É um Patrimônio Natural da Humanidade reconhecido pela UNESCO.",
-    image:
-      "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&h=500&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=800&h=500&fit=crop&auto=format",
-    ],
+      "O Parque Nacional de Saint-Hilaire/Lange protege uma importante área de Mata Atlântica na Serra do Mar paranaense, contribuindo para a conservação da biodiversidade e dos recursos naturais da região.",
+
+    image: "/images/parque-nacional-saint-hilaire-lange.jpg",
+
+    gallery: ["/images/parque-nacional-saint-hilaire-lange.jpg"],
+
     rating: 4.8,
+
     highlights: [
-      "Mata Atlântica protegida",
-      "Cachoeiras",
-      "Trilhas ecológicas",
-      "Biodiversidade global",
-      "Patrimônio UNESCO",
+      "Mata Atlântica",
+      "Serra do Mar",
+      "Biodiversidade",
+      "Unidade de conservação",
     ],
-    hours: "Ter–Dom, 08:00 às 17:00",
-    tip: "Use calçados fechados, leve repelente e contrate guia credenciado para trilhas longas.",
-    biome: "Floresta Ombrófila Densa (Mata Atlântica)",
-    ecoTip: "Não retire nenhuma planta, semente ou pedra. Mantenha silêncio para observar as aves nativas.",
-    preservationStatus: "Unidade de Conservação de Proteção Integral (ICMBio)",
+
+    hours: "Conforme regras de visitação do ICMBio",
+
+    tip: "Verifique previamente quais trilhas e áreas estão abertas à visitação.",
+
+    biome: "Floresta Ombrófila Densa",
+
+    ecoTip:
+      "Siga as regras da unidade de conservação e não retire elementos da natureza.",
+
+    preservationStatus: "Unidade de Conservação de Proteção Integral",
+
+    source: "ICMBio",
+
+    imageCredit: "ICMBio / Wikimedia Commons",
   },
 
-  // Paranaguá
+  // ============================================================
+  // PARANAGUÁ
+  // ============================================================
+
   {
     id: "centro-historico",
     name: "Centro Histórico de Paranaguá",
@@ -206,21 +627,37 @@ export const attractions: Attraction[] = [
     city: "Paranaguá",
     lat: -25.519,
     lng: -48.5097,
-    shortDesc: "O berço da civilização paranaense, com casario colonial e ruas de pedras do séc. XVII ao XIX.",
+
+    shortDesc:
+      "Conjunto histórico de Paranaguá com casario colonial, igrejas e patrimônio cultural.",
+
     description:
-      "O Centro Histórico de Paranaguá é um dos conjuntos urbanos coloniais mais preservados do sul do país. Tombado pelo IPHAN em 1990, reúne sobrados coloniais, igrejas barrocas, fontes e o antigo Colégio dos Jesuítas. Conta a história das primeiras expedições de povoamento do Paraná e o apogeu do ciclo do mate e do porto.",
-    image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1464817739973-0128fe77aaa1?w=800&h=500&fit=crop&auto=format",
+      "O Centro Histórico de Paranaguá reúne construções históricas, igrejas, sobrados e espaços públicos ligados à formação histórica da cidade.",
+
+    image: "/images/centro-historico-de-paranagua.jpg",
+
+    gallery: ["/images/centro-historico-de-paranagua.jpg"],
+
+    rating: 4.8,
+
+    highlights: [
+      "Arquitetura colonial",
+      "Patrimônio histórico",
+      "Igrejas históricas",
+      "Centro urbano antigo",
     ],
-    rating: 4.7,
-    highlights: ["Arquitetura colonial", "Patrimônio IPHAN", "Igrejas históricas", "Século XVII"],
-    tip: "Faça o circuito a pé começando pela Praça da Matriz em direção à Rua da Praia.",
+
+    tip: "Explore o centro a pé para observar os detalhes arquitetônicos dos casarões.",
+
     biome: "Área Urbana Histórica Estuarina",
-    preservationStatus: "Tombamento Nacional pelo IPHAN",
+
+    preservationStatus: "Patrimônio Histórico",
+
+    source: "IPHAN / Prefeitura Municipal de Paranaguá",
+
+    imageCredit: "Wikimedia Commons",
   },
+
   {
     id: "rua-da-praia",
     name: "Rua da Praia (Rua General Carneiro)",
@@ -228,20 +665,38 @@ export const attractions: Attraction[] = [
     city: "Paranaguá",
     lat: -25.5176,
     lng: -48.508,
-    shortDesc: "Charmoso calçadão à beira do Rio Itiberê, repleto de bares, cultura e feiras típicas.",
+
+    shortDesc:
+      "Área histórica junto ao Rio Itiberê com gastronomia, cultura e arquitetura tradicional.",
+
     description:
-      "A lendária Rua da Praia é o ponto de encontro da sociedade parnanguara às margens do Rio Itiberê. Concentra restaurantes com a autêntica culinária caiçara, sobrados restaurados com azulejos portugueses e a passarela de pedestres com vista panorâmica para as canoas e a Ilha dos Valadares.",
-    image:
-      "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&h=500&fit=crop&auto=format",
-    ],
+      "A Rua da Praia é uma das áreas mais conhecidas do centro histórico de Paranaguá, localizada junto ao Rio Itiberê e cercada por construções históricas e estabelecimentos comerciais.",
+
+    image: "/images/rua-da-praia-paranagua.jpg",
+
+    gallery: ["/images/rua-da-praia-paranagua.jpg"],
+
     rating: 4.5,
-    highlights: ["Vista para o Itiberê", "Culinária caiçara", "Vida noturna", "Feira de artesanato"],
-    tip: "Visite no fim de tarde para provar o fandango caiçara e o tradicional Barreado.",
+
+    highlights: [
+      "Rio Itiberê",
+      "Centro histórico",
+      "Gastronomia",
+      "Cultura caiçara",
+    ],
+
+    tip: "Visite no final da tarde para aproveitar a paisagem do Rio Itiberê.",
+
     biome: "Margem Estuarina do Rio Itiberê",
-    ecoTip: "Apoie a produção de artesãos e pescadores caiçaras locais.",
+
+    ecoTip: "Valorize o comércio e os produtores culturais locais.",
+
+    source:
+      "Prefeitura Municipal de Paranaguá / Secretaria de Cultura e Turismo",
+
+    imageCredit: "Wikimedia Commons — CC BY-SA 4.0",
   },
+
   {
     id: "mercado-cafe",
     name: "Mercado Municipal do Café e Pescados",
@@ -250,25 +705,41 @@ export const attractions: Attraction[] = [
     lat: -25.5209,
     lng: -48.50629,
     altitudeM: 0.5,
+
     startDate: "Início do século XIX",
-    endDate: "Início do século XIX",
-    address: "Rua General Carneiro, 139, Centro",
-    shortDesc: "Templo gastronômico do litoral com frutos do mar frescos, camarão e pastel caiçara.",
+
+    address: "Rua General Carneiro, 139, Centro Histórico, Paranaguá – PR",
+
+    shortDesc:
+      "Mercado histórico ligado à gastronomia e à atividade comercial de Paranaguá.",
+
     description:
-      "O Mercado Municipal do Café de Paranaguá, construído em estrutura metálica com arquitetura do século XIX, é o polo da gastronomia marítima paranaense. Diariamente recebe barcos com pescados frescos, ostras e o famoso camarão sete-barbas. Ao lado, os quiosques servem porções fartas, barreado e pastéis de siri imperdíveis.",
-    image:
-      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=500&fit=crop&auto=format",
+      "O Mercado Municipal do Café é um espaço tradicional de Paranaguá ligado à comercialização de alimentos e à gastronomia local.",
+
+    image: "/images/mercado-municipal-do-cafe.jpg",
+
+    gallery: ["/images/mercado-municipal-do-cafe.jpg"],
+
+    rating: 4.7,
+
+    highlights: [
+      "Mercado histórico",
+      "Gastronomia local",
+      "Pescados",
+      "Centro histórico",
     ],
-    rating: 4.6,
-    highlights: ["Camarão sete-barbas", "Barreado tradicional", "Prédio histórico", "Pescado fresco"],
-    hours: "Ter–Dom, 07:00 às 18:00",
-    tip: "Peça o famoso pastel de camarão com caldo de cana no almoço caiçara.",
-    biome: "Estuário de Pesca Sustentável",
-    ecoTip: "Respeite o período de defeso do caranguejo e camarão comprando apenas de fontes legais.",
+
+    hours: "Conforme funcionamento do mercado",
+
+    tip: "Aproveite para conhecer também os demais pontos históricos do centro.",
+
+    biome: "Estuário de Pesca",
+
+    source: "Prefeitura Municipal de Paranaguá",
+
+    imageCredit: "Wikimedia Commons",
   },
+
   {
     id: "santuario-rocio",
     name: "Santuário Estadual de N. Sra. do Rocio",
@@ -277,23 +748,41 @@ export const attractions: Attraction[] = [
     lat: -25.50664,
     lng: -48.53085,
     altitudeM: 5,
+
     startDate: "1813",
-    endDate: "1908",
-    address: "Praça Padre Thomaz Sheehan, 211, Rocio",
-    shortDesc: "Santuário mariano em estilo neogótico dedicado à Padroeira do Estado do Paraná.",
+
+    address: "Praça Padre Thomaz Sheehan, 211, Rocio, Paranaguá – PR",
+
+    shortDesc:
+      "Importante santuário religioso do Paraná localizado no bairro Rocio, em Paranaguá.",
+
     description:
-      "O Santuário de Nossa Senhora do Rocio é o principal centro de fé católica do Paraná, atraindo mais de 200 mil peregrinos em sua festa anual em novembro. Sua igreja neogótica domina a paisagem da baía e guarda a milagrosa imagem encontrada por pescadores no século XVII.",
-    image:
-      "https://images.unsplash.com/photo-1548102245-c79dbcfa9f92?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1548102245-c79dbcfa9f92?w=800&h=500&fit=crop&auto=format",
+      "O Santuário de Nossa Senhora do Rocio é um importante espaço religioso e cultural de Paranaguá, ligado à tradição da devoção à padroeira do Paraná.",
+
+    image: "/images/santuario-estadual.jpg",
+
+    gallery: ["/images/santuario-estadual.jpg"],
+
+    rating: 4.8,
+
+    highlights: [
+      "Patrimônio religioso",
+      "Nossa Senhora do Rocio",
+      "Festa do Rocio",
+      "História de Paranaguá",
     ],
-    rating: 4.7,
-    highlights: ["Arquitetura neogótica", "Vista da baía", "Peregrinação", "História religiosa"],
-    hours: "Aberto diariamente, 06:30 às 19:30",
-    tip: "O mirante externo oferece uma das vistas mais amplas da orla e manguezais de Paranaguá.",
-    biome: "Encosta Costeira e Baía",
+
+    hours: "Consulte os horários oficiais do Santuário",
+
+    tip: "Durante a Festa do Rocio, consulte previamente a programação e os horários.",
+
+    biome: "Área Urbana Costeira",
+
+    source: "Santuário Estadual do Rocio / Mitra Diocesana",
+
+    imageCredit: "Wikimedia Commons",
   },
+
   {
     id: "estacao-ferroviaria",
     name: "Estação Ferroviária de Paranaguá",
@@ -302,23 +791,40 @@ export const attractions: Attraction[] = [
     lat: -25.51674,
     lng: -48.50645,
     altitudeM: 5,
-    startDate: "1922",
-    endDate: "1922",
-    address: "Avenida Maximiliano da Fonseca / Praça Almirante Tamandaré",
-    shortDesc: "Terminal histórico da centenária Estrada de Ferro Paranaguá–Curitiba (1885).",
+
+    address:
+      "Avenida Maximiliano da Fonseca / Praça Almirante Tamandaré, Paranaguá – PR",
+
+    shortDesc:
+      "Estação histórica ligada à Estrada de Ferro Paranaguá–Curitiba.",
+
     description:
-      "Marco histórico da engenharia brasileira, a Estação de Paranaguá foi construída pelos irmãos Rebouças no século XIX para escoar a produção paranaense até o porto. A ferrovia atravessa viadutos e túneis cavados na rocha da Serra do Mar e é considerada uma das viagens cênicas de trem mais bonitas do mundo.",
-    image:
-      "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=800&h=500&fit=crop&auto=format",
+      "A Estação Ferroviária de Paranaguá está ligada à história ferroviária do Paraná e à Estrada de Ferro Paranaguá–Curitiba, importante ligação entre o litoral e o planalto paranaense.",
+
+    image: "/images/estacao-ferroviaria-de-paranagua.jpg",
+
+    gallery: ["/images/estacao-ferroviaria-de-paranagua.jpg"],
+
+    rating: 4.6,
+
+    highlights: [
+      "Estrada de Ferro Paranaguá–Curitiba",
+      "História ferroviária",
+      "Arquitetura histórica",
+      "Patrimônio cultural",
     ],
-    rating: 4.5,
-    highlights: ["Engenharia Rebouças", "Arquitetura séc. XIX", "Trem da Serra do Mar", "Tombado"],
-    hours: "Área externa aberta 24h",
-    tip: "Excelente local para fotos da arquitetura ferroviária clássica.",
+
+    hours: "Área externa",
+
+    tip: "Combine a visita com outros pontos históricos do centro de Paranaguá.",
+
     biome: "Transição Serra do Mar e Planície Litorânea",
+
+    source: "Patrimônio Cultural do Paraná",
+
+    imageCredit: "Wikimedia Commons",
   },
+
   {
     id: "museu-arqueologia",
     name: "Museu de Arqueologia e Etnologia (MAE/UFPR)",
@@ -327,24 +833,36 @@ export const attractions: Attraction[] = [
     lat: -25.5209,
     lng: -48.5069,
     altitudeM: 5,
-    startDate: "1962",
-    endDate: "1962",
-    address: "Rua XV de Novembro, 575, Centro Histórico",
-    shortDesc: "Acervo arqueológico de sambaquis e cultura indígena no antigo Colégio dos Jesuítas (1755).",
+
+    address: "Rua XV de Novembro, 575, Centro Histórico, Paranaguá – PR",
+
+    shortDesc:
+      "Museu da UFPR dedicado à arqueologia e etnologia, instalado em edifício histórico.",
+
     description:
-      "Instalado no monumental edifício do antigo Colégio dos Jesuítas (século XVIII), o MAE/UFPR abriga uma das mais ricas coleções arqueológicas e etnográficas do país. Suas salas apresentam artefatos milenares dos homens dos sambaquis que habitaram a costa do Paraná há mais de 4.000 anos, além de cultura indígena Guarani e Kaingang.",
-    image:
-      "https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=800&h=500&fit=crop&auto=format",
-    ],
-    rating: 4.6,
-    highlights: ["Artefatos de sambaquis", "Edifício jesuíta 1755", "Entrada gratuita", "Arqueologia"],
-    hours: "Ter–Sex 09:00 às 17:00 | Sáb–Dom 12:00 às 17:00",
-    tip: "A visita é educativa e guiada. Não deixe de conhecer a maquete tátil dos sambaquis.",
+      "O Museu de Arqueologia e Etnologia da UFPR possui acervo relacionado à arqueologia e às cultures tradicionais do litoral paranaense, instalado em um edifício histórico no centro de Paranaguá.",
+
+    image: "/images/museu-de-arqueologia-e-etnologia.jpg",
+
+    gallery: ["/images/museu-de-arqueologia-e-etnologia.jpg"],
+
+    rating: 4.7,
+
+    highlights: ["Arqueologia", "Etnologia", "UFPR", "Patrimônio histórico"],
+
+    hours: "Consulte os horários oficiais do MAE/UFPR",
+
+    tip: "Confira previamente a programação de exposições e atividades educativas.",
+
     biome: "Patrimônio Arqueológico e Histórico",
-    preservationStatus: "Museu Federal da UFPR / Tombamento Histórico",
+
+    preservationStatus: "Museu da Universidade Federal do Paraná",
+
+    source: "Universidade Federal do Paraná — MAE",
+
+    imageCredit: "Wikimedia Commons / UFPR",
   },
+
   {
     id: "aquario-paranagua",
     name: "Aquário Marinho de Paranaguá",
@@ -353,117 +871,371 @@ export const attractions: Attraction[] = [
     lat: -25.52296,
     lng: -48.50644,
     altitudeM: 4,
-    startDate: "13/01/2014",
-    endDate: "13/01/2014",
-    address: "Rua João Régis, s/nº, Centro Histórico",
-    shortDesc: "Centro de educação ambiental com espécies marinhas nativas, raias e pinguins.",
+
+    address: "Rua João Régis, s/nº, Centro Histórico, Paranaguá – PR",
+
+    shortDesc:
+      "Espaço de educação ambiental dedicado à fauna marinha e estuarina.",
+
     description:
-      "O Aquário de Paranaguá é um dos maiores do sul do Brasil, focado na preservação da biodiversidade aquática da Baía de Paranaguá e costa atlântica. Possui tanques táteis com raias e tubarões, pinguinário, manguezal artificial educativo e recintos com animais resgatados.",
-    image:
-      "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=800&h=500&fit=crop&auto=format",
+      "O Aquário Marinho de Paranaguá é voltado à educação ambiental e à apresentação de espécies relacionadas aos ambientes marinhos e estuarinos do litoral paranaense.",
+
+    image: "/images/aquario-de-paranagua.jpg",
+
+    gallery: ["/images/aquario-de-paranagua.jpg"],
+
+    rating: 4.4,
+
+    highlights: [
+      "Educação ambiental",
+      "Fauna marinha",
+      "Ecossistemas estuarinos",
+      "Atividade para famílias",
     ],
-    rating: 4.3,
-    highlights: ["Tanque de raias", "Pinguins de Magalhães", "Educação ambiental", "Para todas as idades"],
-    hours: "Ter–Dom, 10:00 às 17:30",
-    tip: "Ótimo programa em família para conhecer a fauna marinha que vive na nossa baía.",
+
+    hours: "Consulte os horários oficiais do Aquário",
+
+    tip: "Verifique previamente os horários de funcionamento.",
+
     biome: "Ecossistemas Marinho e Estuarino",
-    ecoTip: "O aquário atua na reabilitação de animais marinhos encalhados no litoral.",
+
+    source:
+      "Aquário Marinho de Paranaguá / fotos de visitantes via Tripadvisor",
+
+    imageCredit: "Fotos de visitantes — Tripadvisor",
   },
 
-  // Registros complementares da planilha de patrimônio de Paranaguá
   {
-    id: "estacao-mall", name: "Estação Mall", category: "Gastronomia", city: "Paranaguá", lat: -25.51563, lng: -48.50698, altitudeM: 5, startDate: "2016", endDate: "2016", address: "Rua João Eugênio, 711, Costeira",
-    shortDesc: "Open mall ao lado da Estação Ferroviária, com lojas, alimentação e serviços.",
-    description: "Centro comercial em formato de open mall, localizado junto à Estação Ferroviária de Paranaguá, com lojas, alimentação e serviços.",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=500&fit=crop&auto=format", gallery: ["https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=500&fit=crop&auto=format"], rating: 4.2,
-    highlights: ["Open mall", "Lojas", "Alimentação", "Próximo à estação"],
-  },
-  {
-    id: "antiga-alfandega", name: "Antiga Alfândega de Paranaguá", category: "História", city: "Paranaguá", lat: -25.5103, lng: -48.5103, altitudeM: 5, startDate: "1903", endDate: "1911", address: "Praça Ubaldino do Amaral / faixa do cais",
-    shortDesc: "Edificação histórica ligada à atividade portuária e comercial de Paranaguá.",
-    description: "Edificação histórica da Alfândega de Paranaguá. A instituição foi criada em 1827 e o prédio atual teve sua sede própria inaugurada em 1911; é patrimônio cultural tombado.",
-    image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&h=500&fit=crop&auto=format", gallery: ["https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&h=500&fit=crop&auto=format"], rating: 4.5,
-    highlights: ["Patrimônio tombado", "História portuária", "Cais histórico", "Século XX"],
-  },
-  {
-    id: "palacio-mathias-bohn", name: "Palácio Mathias Böhn", category: "História", city: "Paranaguá", lat: -25.520124, lng: -48.505084, altitudeM: 6, startDate: "Final do século XVIII", endDate: "Século XIX", address: "Rua General Carneiro, 258, Centro Histórico",
-    shortDesc: "Palacete histórico do Centro Histórico, reformado em estilo historicista.",
-    description: "Palacete histórico construído no final do século XVIII, com fachada reformada no século XIX em estilo historicista. Atualmente integra o patrimônio cultural de Paranaguá.",
-    image: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=800&h=500&fit=crop&auto=format", gallery: ["https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=800&h=500&fit=crop&auto=format"], rating: 4.4,
-    highlights: ["Palacete histórico", "Centro Histórico", "Arquitetura historicista", "Patrimônio cultural"],
-  },
-  {
-    id: "fazenda-morro-holandes", name: "Fazenda Morro Holandês", category: "Natureza", city: "Paranaguá", lat: -25.567721, lng: -48.6156003, altitudeM: 40, address: "Rodovia PR-508, km 7, Colônia Maria Luiza",
-    shortDesc: "Propriedade de agricultura familiar com visitação e vista para a Serra da Prata.",
-    description: "Propriedade rural de agricultura familiar na Colônia Maria Luiza, com visitação e vista para Paranaguá e a Serra da Prata.",
-    image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&h=500&fit=crop&auto=format", gallery: ["https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&h=500&fit=crop&auto=format"], rating: 4.6,
-    highlights: ["Agricultura familiar", "Visitação rural", "Serra da Prata", "Paisagem"],
-  },
-  {
-    id: "palacio-visconde-nacar", name: "Palácio Visconde de Nácar", category: "História", city: "Paranaguá", lat: -25.5207, lng: -48.5078, altitudeM: 6, startDate: "1856", endDate: "1856", address: "Rua Visconde de Nácar, 33, Centro Histórico",
-    shortDesc: "Palacete neoclássico que marcou a vida política e social de Paranaguá.",
-    description: "Palacete neoclássico construído em 1856 para o Visconde de Nácar. Foi residência de uma importante figura da elite paranaense e posteriormente sediou órgãos da Prefeitura e da Câmara.",
-    image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&h=500&fit=crop&auto=format", gallery: ["https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&h=500&fit=crop&auto=format"], rating: 4.5,
-    highlights: ["Arquitetura neoclássica", "Construído em 1856", "Centro Histórico", "Patrimônio"],
-  },
-  {
-    id: "instituto-historico-geografico", name: "Instituto Histórico Geográfico de Paranaguá", category: "História", city: "Paranaguá", lat: -25.5216463384, lng: -48.5073140712, altitudeM: 6, startDate: "1931", endDate: "1931", address: "Rua XV de Novembro, 621, Centro Histórico",
-    shortDesc: "Instituição com acervo documental e objetos ligados à história de Paranaguá e do Paraná.",
-    description: "Instituição histórica fundada em 1931, com acervo de documentos e objetos dos séculos XVII e XVIII, incluindo peças ligadas à história de Paranaguá e do Paraná.",
-    image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800&h=500&fit=crop&auto=format", gallery: ["https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800&h=500&fit=crop&auto=format"], rating: 4.6,
-    highlights: ["Acervo histórico", "Documentos", "Fundado em 1931", "Memória local"],
-  },
-  {
-    id: "mercado-nilton-abel-lima", name: "Mercado Municipal Nilton Abel de Lima", category: "Gastronomia", city: "Paranaguá", lat: -25.52429, lng: -48.50686, altitudeM: 4, startDate: "29/07/2009", endDate: "29/07/2009", address: "Rua João Régis, s/nº, Centro Histórico",
-    shortDesc: "Mercado municipal com artesanato, produtos frescos e gastronomia.",
-    description: "Mercado municipal inaugurado em 29 de julho de 2009, com boxes de artesanato, hortaliças, frutas, grãos e especiarias, além de restaurantes e floricultura.",
-    image: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800&h=500&fit=crop&auto=format", gallery: ["https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800&h=500&fit=crop&auto=format"], rating: 4.4,
-    highlights: ["Artesanato", "Produtos locais", "Restaurantes", "Inaugurado em 2009"],
-  },
-  {
-    id: "fortaleza-prazeres", name: "Fortaleza de Nossa Senhora dos Prazeres", category: "História", city: "Ilha do Mel", lat: -25.51056, lng: -48.31131, altitudeM: 5, startDate: "1767", endDate: "1769", address: "Praia da Fortaleza, Ilha do Mel",
-    shortDesc: "Fortificação colonial na Ilha do Mel, construída para defender a entrada da baía.",
-    description: "Fortificação colonial construída na Ilha do Mel para defender a entrada da Baía de Paranaguá. As obras começaram em 1767 e foram concluídas em 1769.",
-    image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=800&h=500&fit=crop&auto=format", gallery: ["https://images.unsplash.com/photo-1500534623283-312aade485b7?w=800&h=500&fit=crop&auto=format"], rating: 4.8,
-    highlights: ["Fortificação colonial", "Ilha do Mel", "Construída em 1767", "Vista para a baía"],
+    id: "estacao-mall",
+    name: "Estação Mall",
+    category: "Gastronomia",
+    city: "Paranaguá",
+    lat: -25.51563,
+    lng: -48.50698,
+    altitudeM: 5,
+
+    address: "Rua João Eugênio, 711, Costeira, Paranaguá – PR",
+
+    shortDesc:
+      "Centro comercial próximo à região histórica e à Estação Ferroviária de Paranaguá.",
+
+    description:
+      "Centro comercial localizado na região da Estação Ferroviária de Paranaguá, reunindo lojas, alimentação e serviços.",
+
+    image: "/images/estacao-mall-paranagua.jpg",
+
+    gallery: ["/images/estacao-mall-paranagua.jpg"],
+
+    rating: 4.2,
+
+    highlights: ["Lojas", "Alimentação", "Serviços", "Próximo à estação"],
+
+    source: "Fotos de visitantes via Tripadvisor",
+
+    imageCredit: "Fotos de visitantes — Tripadvisor",
   },
 
-  // Ilha do Mel
+  {
+    id: "antiga-alfandega",
+    name: "Antiga Alfândega de Paranaguá",
+    category: "História",
+    city: "Paranaguá",
+    lat: -25.5103,
+    lng: -48.5103,
+    altitudeM: 5,
+
+    address: "Praça Ubaldino do Amaral / região do cais, Paranaguá – PR",
+
+    shortDesc:
+      "Edificação histórica ligada à atividade portuária e comercial de Paranaguá.",
+
+    description:
+      "A antiga Alfândega está ligada à história portuária e comercial de Paranaguá, refletindo a importância histórica do porto para o desenvolvimento da cidade.",
+
+    image: "/images/antiga-alfandega-de-paranagua.jpg",
+
+    gallery: ["/images/antiga-alfandega-de-paranagua.jpg"],
+
+    rating: 4.5,
+
+    highlights: [
+      "História portuária",
+      "Patrimônio histórico",
+      "Região do cais",
+      "Comércio marítimo",
+    ],
+
+    source:
+      "iPatrimônio (CC BY 4.0) / CPC — Coordenação do Patrimônio Cultural do Paraná",
+
+    imageCredit:
+      "CPC / Prefeitura Municipal de Paranaguá — via iPatrimônio (CC BY 4.0)",
+  },
+
+  {
+    id: "palacio-mathias-bohn",
+    name: "Palácio Mathias Böhn",
+    category: "História",
+    city: "Paranaguá",
+    lat: -25.520124,
+    lng: -48.505084,
+    altitudeM: 6,
+
+    address: "Rua General Carneiro, 258, Centro Histórico, Paranaguá – PR",
+
+    shortDesc:
+      "Palacete histórico localizado no Centro Histórico de Paranaguá.",
+
+    description:
+      "O Palácio Mathias Böhn integra o conjunto de edificações históricas do centro de Paranaguá e possui importância para a memória arquitetônica e urbana da cidade.",
+
+    image: "/images/palacio-mathias-bohn.jpg",
+
+    gallery: ["/images/palacio-mathias-bohn.jpg"],
+
+    rating: 4.4,
+
+    highlights: [
+      "Palacete histórico",
+      "Centro Histórico",
+      "Arquitetura",
+      "Patrimônio cultural",
+    ],
+
+    source: "Fotos de visitantes via Tripadvisor",
+
+    imageCredit: "Fotos de visitantes — Tripadvisor",
+  },
+
+  {
+    id: "fazenda-morro-holandes",
+    name: "Fazenda Morro Holandês",
+    category: "Natureza",
+    city: "Paranaguá",
+    lat: -25.567721,
+    lng: -48.6156003,
+    altitudeM: 40,
+
+    address: "Rodovia PR-508, km 7, Colônia Maria Luiza, Paranaguá – PR",
+
+    shortDesc:
+      "Propriedade rural de agricultura familiar com paisagens da região de Paranaguá.",
+
+    description:
+      "Propriedade rural localizada na Colônia Maria Luiza, ligada à agricultura familiar e ao turismo rural.",
+
+    image: "/images/fazenda-morro-holandes.jpg",
+
+    gallery: ["/images/fazenda-morro-holandes.jpg"],
+
+    rating: 4.6,
+
+    highlights: [
+      "Agricultura familiar",
+      "Turismo rural",
+      "Paisagem rural",
+      "Colônia Maria Luiza",
+    ],
+
+    source: "Turismo Rural de Paranaguá",
+
+    imageCredit: "Wikimedia Commons — CC BY-SA 4.0",
+  },
+
+  {
+    id: "palacio-visconde-nacar",
+    name: "Palácio Visconde de Nácar",
+    category: "História",
+    city: "Paranaguá",
+    lat: -25.5207,
+    lng: -48.5078,
+    altitudeM: 6,
+
+    address: "Rua Visconde de Nácar, 33, Centro Histórico, Paranaguá – PR",
+
+    shortDesc:
+      "Palacete histórico de arquitetura neoclássica no Centro Histórico de Paranaguá.",
+
+    description:
+      "O Palácio Visconde de Nácar é uma importante construção histórica do centro de Paranaguá, ligada à história política e social da cidade.",
+
+    image: "/images/palacio-visconde-de-nacar.jpg",
+
+    gallery: ["/images/palacio-visconde-de-nacar.jpg"],
+
+    rating: 4.6,
+
+    highlights: [
+      "Arquitetura neoclássica",
+      "Centro Histórico",
+      "Construção histórica",
+      "Patrimônio cultural",
+    ],
+
+    source: "Patrimônio Cultural do Paraná",
+
+    imageCredit: "Wikimedia Commons",
+  },
+
+  {
+    id: "instituto-historico-geografico",
+    name: "Instituto Histórico Geográfico de Paranaguá",
+    category: "História",
+    city: "Paranaguá",
+    lat: -25.521646,
+    lng: -48.507314,
+    altitudeM: 6,
+
+    address: "Rua XV de Novembro, 621, Centro Histórico, Paranaguá – PR",
+
+    shortDesc:
+      "Instituição dedicada à preservação da memória histórica e documental de Paranaguá.",
+
+    description:
+      "O Instituto Histórico e Geográfico de Paranaguá preserva documentos, objetos e registros relacionados à história da cidade e do litoral paranaense.",
+
+    image: "/images/Instituto-Histórico-Geográfico.png",
+
+    gallery: ["/images/Instituto-Histórico-Geográfico.png"],
+
+    rating: 4.6,
+
+    highlights: [
+      "Acervo histórico",
+      "Documentos",
+      "Memória local",
+      "História de Paranaguá",
+    ],
+
+    source:
+      "Instituto Histórico e Geográfico de Paranaguá / fotos de visitantes via Tripadvisor",
+
+    imageCredit: "Fotos de visitantes — Tripadvisor",
+  },
+
+  {
+    id: "mercado-nilton-abel-lima",
+    name: "Mercado Municipal Nilton Abel de Lima",
+    category: "Gastronomia",
+    city: "Paranaguá",
+    lat: -25.52429,
+    lng: -48.50686,
+    altitudeM: 4,
+
+    address: "Rua João Régis, s/nº, Centro Histórico, Paranaguá – PR",
+
+    shortDesc:
+      "Mercado municipal com produtos locais, artesanato e gastronomia.",
+
+    description:
+      "Mercado municipal de Paranaguá que reúne comércio de produtos locais, artesanato, alimentos e serviços.",
+
+    image: "/images/mercado-municipal-nilton-abel-de-lima.jpg",
+
+    gallery: ["/images/mercado-municipal-nilton-abel-de-lima.jpg"],
+
+    rating: 4.4,
+
+    highlights: [
+      "Artesanato",
+      "Produtos locais",
+      "Gastronomia",
+      "Comércio tradicional",
+    ],
+
+    source: "Prefeitura Municipal de Paranaguá",
+
+    imageCredit: "Wikimedia Commons — CC BY-SA 4.0",
+  },
+
+  // ============================================================
+  // ILHA DO MEL
+  // ============================================================
+
+  {
+    id: "fortaleza-prazeres",
+    name: "Fortaleza de Nossa Senhora dos Prazeres",
+    category: "História",
+    city: "Ilha do Mel",
+    lat: -25.51056,
+    lng: -48.31131,
+    altitudeM: 5,
+
+    startDate: "1767",
+    endDate: "1769",
+
+    address: "Praia da Fortaleza, Ilha do Mel, Paraná – Brasil",
+
+    shortDesc:
+      "Fortificação colonial construída para proteger a entrada da Baía de Paranaguá.",
+
+    description:
+      "A Fortaleza de Nossa Senhora dos Prazeres é uma fortificação histórica localizada na Ilha do Mel. Sua construção começou no século XVIII e está relacionada à defesa da entrada da Baía de Paranaguá.",
+
+    image: "/images/fortaleza-de-nossa-senhora-dos-prazeres.jpg",
+
+    gallery: ["/images/fortaleza-de-nossa-senhora-dos-prazeres.jpg"],
+
+    rating: 4.9,
+
+    highlights: [
+      "Fortificação colonial",
+      "Ilha do Mel",
+      "História militar",
+      "Vista para a baía",
+    ],
+
+    source: "IPHAN / Patrimônio Histórico Nacional",
+
+    imageCredit: "Wikimedia Commons",
+  },
+
   {
     id: "ilha-mel-passeio",
-    name: "Ilha do Mel — Farol e Fortaleza",
+    name: "Ilha do Mel — Farol e Encantadas",
     category: "Ilhas",
     city: "Ilha do Mel",
     lat: -25.53909,
     lng: -48.29085,
     altitudeM: 90,
+
     startDate: "1872",
-    endDate: "1872",
-    address: "Farol das Conchas, Ilha do Mel",
-    shortDesc: "Paraíso ecológico sem carros, com praias paradisíacas, o Farol das Conchas e a Fortaleza do séc. XVIII.",
+
+    address: "Ilha do Mel, Paranaguá – PR",
+
+    shortDesc:
+      "Destino natural do litoral paranaense conhecido pelo Farol das Conchas, praias e trilhas.",
+
     description:
-      "A Ilha do Mel é o maior tesouro ecológico do Paraná. 95% do seu território compõe uma Estação Ecológica e Parque Estadual de Mata Atlântica e restinga. O Farol das Conchas (1872) oferece um mirante 360° do oceano, e a Fortaleza de N. Sra. dos Prazeres (1767) guarda canhões coloniais à beira-mar.",
-    image:
-      "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&h=500&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=500&fit=crop&auto=format",
-    ],
+      "A Ilha do Mel é um dos principais destinos turísticos do litoral do Paraná. A ilha reúne praias, trilhas, áreas de Mata Atlântica, o Farol das Conchas e a Fortaleza de Nossa Senhora dos Prazeres.",
+
+    image: "/images/Ilha-do-mel-paranagua.jpg",
+
+    gallery: ["/images/Ilha-do-mel-paranagua.jpg"],
+
     rating: 4.9,
+
     highlights: [
-      "Sem circulação de carros",
-      "Farol das Conchas (1872)",
-      "Fortaleza colonial (1767)",
-      "Trilhas de Mata Atlântica",
-      "Preservação integral",
+      "Farol das Conchas",
+      "Praias",
+      "Trilhas",
+      "Mata Atlântica",
+      "Fortaleza histórica",
     ],
-    tip: "A ilha possui limite diário de visitantes (5.000 pessoas). Leve lanterna para caminhar à noite pelas trilhas de areia.",
-    biome: "Restinga Arbórea e Mata Atlântica Insular",
-    ecoTip: "Proibido qualquer veículo automotor. Todo o lixo gerado deve ser descartado nas lixeiras das vilas.",
-    preservationStatus: "Estação Ecológica e Parque Estadual (IAT)",
+
+    tip: "Planeje o passeio de acordo com os horários das embarcações e condições climáticas.",
+
+    biome: "Restinga e Mata Atlântica Insular",
+
+    ecoTip: "Leve seu lixo de volta e permaneça nas trilhas demarcadas.",
+
+    preservationStatus: "Unidades de conservação estaduais",
+
+    source: "Instituto Água e Terra / Viaje Paraná",
+
+    imageCredit: "Wikimedia Commons",
   },
+
   {
     id: "gruta-encantadas",
     name: "Gruta das Encantadas",
@@ -471,21 +1243,45 @@ export const attractions: Attraction[] = [
     city: "Ilha do Mel",
     lat: -25.573,
     lng: -48.31,
-    shortDesc: "Misteriosa fenda geológica esculpida pelo mar com lendas caiçaras de sereias.",
+
+    shortDesc:
+      "Formação rochosa natural localizada na Ilha do Mel, associada às lendas tradicionais da região.",
+
     description:
-      "A Gruta das Encantadas é uma formação rochosa única no sul da Ilha do Mel, onde o bater incessante das ondas do Atlântico esculpiu uma caverna natural em meio a um dique de diabásio negro. O acesso é feito por uma passarela de madeira sustentável na maré baixa.",
+      "A Gruta das Encantadas é uma formação rochosa localizada na Ilha do Mel. O local está associado às lendas tradicionais da ilha e pode ser visitado conforme as condições de maré e acesso.",
+
     image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&h=500&fit=crop&auto=format",
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ilha_do_Mel_-_Gruta_das_Encantadas.jpg",
+
     gallery: [
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&h=500&fit=crop&auto=format",
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ilha_do_Mel_-_Gruta_das_Encantadas.jpg",
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ilha_do_Mel_-_Gruta.jpg",
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ilha_do_Mel_-_Morro_da_Gruta_das_Encantadas.jpg",
     ],
+
     rating: 4.8,
-    highlights: ["Formação geológica", "Passarela ecológica", "Lendas caiçaras", "Visual selvagem"],
-    hours: "Visitação recomendada durante a Maré Baixa",
-    tip: "Consulte a tábua de marés no EcoPortal antes de caminhar até a gruta para pegar a água baixa.",
-    biome: "Costão Rochoso e Mar Aberto",
-    ecoTip: "Caminhe apenas pelas passarelas demarcadas para não desgastar as rochas e a vegetação pioneira.",
+
+    highlights: [
+      "Formação rochosa",
+      "Ilha do Mel",
+      "Lendas tradicionais",
+      "Paisagem costeira",
+    ],
+
+    hours: "Visitação condicionada às condições de maré e acesso",
+
+    tip: "Verifique a maré antes de visitar a formação rochosa.",
+
+    biome: "Costão Rochoso e Marinho",
+
+    ecoTip: "Não suba em áreas frágeis da formação rochosa e não deixe lixo.",
+
+    source:
+      "Instituto Água e Terra / Wikimedia Commons — categoria Parque Estadual da Ilha do Mel",
+
+    imageCredit: "Wikimedia Commons — Parque Estadual da Ilha do Mel",
   },
+
   {
     id: "ilha-pecas",
     name: "Vila das Peças e Baía dos Golfinhos",
@@ -493,19 +1289,37 @@ export const attractions: Attraction[] = [
     city: "Paranaguá",
     lat: -25.461,
     lng: -48.336,
-    shortDesc: "Passeio de barco por manguezais protegidos com observação natural de botos-cinza.",
+
+    shortDesc:
+      "Comunidade tradicional e área estuarina com paisagens naturais e possibilidade de observação de botos.",
+
     description:
-      "Localizada na entrada do Complexo Estuarino de Paranaguá, a Ilha das Peças faz parte do Parque Nacional do Superagui. O trajeto de barco a partir de Pontal do Sul ou Paranaguá é o principal ponto do litoral brasileiro para avistar botos-cinza nadando em bandos livres.",
-    image:
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=500&fit=crop&auto=format",
-    gallery: [
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=500&fit=crop&auto=format",
-    ],
+      "A Ilha das Peças integra o complexo estuarino do litoral paranaense e possui comunidade tradicional, áreas de manguezal e ambientes naturais de grande importância.",
+
+    image: "/images/Ilha-das-pecas-Barcos.jpg",
+
+    gallery: ["/images/Ilha-das-pecas-Barcos.jpg"],
+
     rating: 4.8,
-    highlights: ["Avistamento de botos", "Manguezais intactos", "Comunidade tradicional", "Passeio náutico"],
-    tip: "Contrate barqueiros locais na Ponta do Poço. O passeio costuma durar cerca de 4 horas.",
+
+    highlights: [
+      "Comunidade tradicional",
+      "Manguezais",
+      "Passeios náuticos",
+      "Observação da natureza",
+    ],
+
+    tip: "Prefira operadores locais que conheçam as regras ambientais da região.",
+
     biome: "Manguezal e Complexo Estuarino",
-    ecoTip: "Barcos devem manter velocidade reduzida e motor em neutro próximo aos golfinhos.",
-    preservationStatus: "Parque Nacional do Superagui / APA de Guaraqueçaba",
+
+    ecoTip:
+      "Mantenha distância dos animais e não tente atraí-los para perto das embarcações.",
+
+    preservationStatus: "Área protegida do complexo estuarino",
+
+    source: "ICMBio / Parque Nacional do Superagui",
+
+    imageCredit: "Me Leva Viajar — Acervo Local",
   },
 ];

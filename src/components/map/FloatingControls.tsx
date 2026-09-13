@@ -72,7 +72,9 @@ export function FloatingControls({
           }`}
           title={pitch3D ? "Visão Plana 2D" : "Visão 3D Inclinada"}
         >
-          <span className="text-[11px] font-black leading-none tracking-wider">3D</span>
+          <span className="text-[11px] font-black leading-none tracking-wider">
+            3D
+          </span>
         </button>
 
         {/* Toggle Satellite / Dark Map */}

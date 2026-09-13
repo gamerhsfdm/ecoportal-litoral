@@ -32,6 +32,8 @@ export interface Attraction {
   biome?: string;
   ecoTip?: string;
   preservationStatus?: string;
+  source?: string;
+  imageCredit?: string;
 }
 
 export type EcoCategory =

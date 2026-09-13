@@ -9,6 +9,42 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "upload.wikimedia.org",
+      },
+      {
+        protocol: "https",
+        hostname: "commons.wikimedia.org",
+      },
+      {
+        protocol: "https",
+        hostname: "thumb.wikimedia.org",
+      },
+      {
+        protocol: "https",
+        hostname: "www.viajeparana.com",
+      },
+      {
+        protocol: "https",
+        hostname: "viajeparana.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.pontaldoparana.pr.gov.br",
+      },
+      {
+        protocol: "https",
+        hostname: "pontaldoparana.pr.gov.br",
+      },
+      {
+        protocol: "https",
+        hostname: "www.paranagua.pr.gov.br",
+      },
+      {
+        protocol: "https",
+        hostname: "paranagua.pr.gov.br",
+      },
+      {
+        protocol: "https",
         hostname: "api.maptiler.com",
       },
       {

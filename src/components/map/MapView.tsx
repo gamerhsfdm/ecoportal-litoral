@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useCallback } from "react";
+import { useMemo, useCallback, useRef } from "react";
 import Map, {
   Marker,
   Popup,
@@ -8,6 +8,7 @@ import Map, {
   Layer,
   type MapRef,
   type MapLayerMouseEvent,
+  type ViewStateChangeEvent,
 } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import Image from "next/image";
@@ -15,8 +16,9 @@ import { useMapStore } from "@/store/useMapStore";
 import { attractions, CATEGORY_CONFIG } from "@/data/attractions";
 import { ecoAreas } from "@/data/ecoAreas";
 import { Attraction, RouteStop } from "@/types";
-import { X, ChevronRight } from "lucide-react";
+import { X } from "lucide-react";
 import type { FeatureCollection, Polygon } from "geojson";
+import { LocationPopupCard } from "./LocationPopupCard";
 
 // Map Tile Styles
 const SATELLITE_STYLE = {
@@ -81,6 +83,8 @@ export function MapView({ mapRef }: MapViewProps) {
     setSelectedEvent,
   } = useMapStore();
 
+  const isProgrammaticInteractionRef = useRef(false);
+
   // Filtered attractions based on Category and City
   const filteredAttractions = useMemo(() => {
     return attractions.filter((a) => {
@@ -129,32 +133,48 @@ export function MapView({ mapRef }: MapViewProps) {
 
   // Sync internal map movement with store
   const handleMove = useCallback(
-    (evt: { viewState: typeof viewState }) => {
+    (evt: ViewStateChangeEvent) => {
       setViewState(evt.viewState);
     },
     [setViewState],
   );
 
+  // Close detail drawer sheet and popup cards when the user drags the map
+  const handleDragStart = useCallback(() => {
+    if (isProgrammaticInteractionRef.current) return;
+    setSelectedAttraction(null);
+    setSelectedEvent(null);
+    setDetailAttraction(null);
+  }, [setSelectedAttraction, setSelectedEvent, setDetailAttraction]);
+
   const handleAttractionClick = useCallback(
     (attraction: Attraction) => {
+      isProgrammaticInteractionRef.current = true;
       setSelectedAttraction(attraction);
       mapRef.current?.flyTo({
         center: [attraction.lng, attraction.lat],
         zoom: 14.5,
-        duration: 1200,
+        duration: 1000,
       });
+      setTimeout(() => {
+        isProgrammaticInteractionRef.current = false;
+      }, 1200);
     },
     [setSelectedAttraction, mapRef],
   );
 
   const handleStopClick = useCallback(
     (stop: RouteStop, index: number) => {
+      isProgrammaticInteractionRef.current = true;
       setCurrentStopIndex(index);
       mapRef.current?.flyTo({
         center: [stop.coordinates[0], stop.coordinates[1]],
         zoom: 14.5,
         duration: 1000,
       });
+      setTimeout(() => {
+        isProgrammaticInteractionRef.current = false;
+      }, 1200);
     },
     [setCurrentStopIndex, mapRef],
   );
@@ -190,6 +210,7 @@ export function MapView({ mapRef }: MapViewProps) {
         ref={mapRef}
         {...viewState}
         onMove={handleMove}
+        onDragStart={handleDragStart}
         mapStyle={isSatellite ? SATELLITE_STYLE : STREET_STYLE}
         style={{ width: "100%", height: "100%" }}
         attributionControl={false}
@@ -338,7 +359,11 @@ export function MapView({ mapRef }: MapViewProps) {
                 }}
               >
                 <div
-                  className="relative cursor-pointer group"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleAttractionClick(attraction);
+                  }}
+                  className="relative cursor-pointer group pointer-events-auto"
                   style={{
                     transform: isSelected
                       ? "scale(1.22) translateY(-4px)"
@@ -445,87 +470,11 @@ export function MapView({ mapRef }: MapViewProps) {
             closeOnClick={false}
             onClose={() => setSelectedAttraction(null)}
           >
-            <div
-              className="w-[min(19rem,calc(100vw-1.25rem))] rounded-2xl overflow-hidden shadow-2xl animate-fade-in border border-white/15 text-white"
-              style={{
-                background:
-                  "linear-gradient(155deg, rgba(8, 25, 49, 0.99), rgba(5, 16, 34, 0.99))",
-                boxShadow:
-                  "0 18px 46px rgba(0,0,0,0.56), 0 1px 0 rgba(255,255,255,0.08) inset",
-              }}
-            >
-              <div className="relative h-36 w-full overflow-hidden bg-slate-900">
-                <Image
-                  src={selectedAttraction.image}
-                  alt={selectedAttraction.name}
-                  fill
-                  className="object-cover"
-                  sizes="288px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(5,16,34,0.96)] via-slate-950/15 to-black/25" />
-
-                <button
-                  onClick={() => setSelectedAttraction(null)}
-                  className="absolute top-2.5 right-2.5 w-7 h-7 rounded-full flex items-center justify-center bg-slate-950/70 hover:bg-slate-950 text-white border border-white/15 transition-colors cursor-pointer"
-                >
-                  <X size={12} />
-                </button>
-
-                <div className="absolute bottom-2 left-3">
-                  <span
-                    className="px-2 py-0.5 rounded-full text-[10px] font-bold"
-                    style={{
-                      background:
-                        CATEGORY_CONFIG[selectedAttraction.category]?.bg ||
-                        "rgba(255,255,255,0.1)",
-                      color:
-                        CATEGORY_CONFIG[selectedAttraction.category]?.color ||
-                        "#fff",
-                      border: `1px solid ${
-                        CATEGORY_CONFIG[selectedAttraction.category]?.color ||
-                        "#fff"
-                      }40`,
-                    }}
-                  >
-                    {CATEGORY_CONFIG[selectedAttraction.category]?.icon}{" "}
-                    {selectedAttraction.category}
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-4 space-y-2.5">
-                <div>
-                  <h3 className="font-bold text-white text-[15px] leading-snug tracking-tight">
-                    {selectedAttraction.name}
-                  </h3>
-                  <div className="flex items-center gap-1 mt-1 text-[11px] text-white/50">
-                    <span>★ {selectedAttraction.rating.toFixed(1)}</span>
-                    <span>·</span>
-                    <span>{selectedAttraction.city}</span>
-                  </div>
-                </div>
-
-                <p className="text-xs text-white/65 line-clamp-2 leading-relaxed">
-                  {selectedAttraction.shortDesc}
-                </p>
-
-                <div className="pt-2.5 flex items-center justify-between border-t border-white/10">
-                  <button
-                    onClick={() => setDetailAttraction(selectedAttraction)}
-                    className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold transition-all hover:brightness-110 active:scale-[0.98] cursor-pointer shadow-md"
-                    style={{
-                      background:
-                        CATEGORY_CONFIG[selectedAttraction.category]?.color ||
-                        "#22c5d9",
-                      color: "#081226",
-                    }}
-                  >
-                    <span>Ver detalhes & Navegação</span>
-                    <ChevronRight size={13} />
-                  </button>
-                </div>
-              </div>
-            </div>
+            <LocationPopupCard
+              location={selectedAttraction}
+              onClose={() => setSelectedAttraction(null)}
+              onNavigateDetails={(item) => setDetailAttraction(item)}
+            />
           </Popup>
         )}
       </Map>

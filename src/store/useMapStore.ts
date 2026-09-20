@@ -127,7 +127,11 @@ export const useMapStore = create<MapStore>((set, get) => ({
       selectedEvent: null,
     })),
 
-  setDetailAttraction: (attraction) => set({ detailAttraction: attraction }),
+  setDetailAttraction: (attraction) =>
+    set({
+      detailAttraction: attraction,
+      selectedAttraction: null, // Fecha o card flutuante do mapa automaticamente
+    }),
 
   setSelectedEcoArea: (ecoArea) =>
     set((state) => ({
